@@ -10,4 +10,5 @@ class AuthServer extends Model
 
     protected $fillable = [
        'uuid','access_token','client_token', 'session', 'server'
-    ];}
+    ];
+}

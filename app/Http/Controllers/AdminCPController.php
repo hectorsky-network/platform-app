@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
 use App\AuthServer;
+use App\Modpack;
 use App\Skin;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -14,15 +16,6 @@ use Illuminate\Support\Facades\Validator;
 
 class AdminCPController extends Controller
 {
-    use RegistersUsers;
-
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = 'admin/users';
-
     function index(){
             return view('admin\home');
     }
@@ -35,12 +28,42 @@ class AdminCPController extends Controller
             ->with(compact('games'))
             ->with(compact('skins'));
     }
+
+    function articles(){
+        $articles = Article::all();
+        return view('admin/articles')->with(compact('articles'));
+    }
+
+    function modpacks(){
+        $modpacks = Modpack::all();
+        return view('admin/modpacks')->with(compact('modpacks'));
+    }
+
     function adduser(){
         return view('admin\adduser');
     }
+
+    function addarticle(){
+        return view('admin\addarticle');
+    }
+
+    function addmodpack(){
+        return view('admin\addmodpack');
+    }
+
     function edituser($id){
         $user = User::find($id);
         return view('admin\edituser')->with(compact('user'));
+    }
+
+    function editarticle($id){
+        $article = Article::find($id);
+        return view('admin\editarticle')->with(compact('article'));
+    }
+
+    function editmodpack($id){
+        $modpack = Modpack::find($id);
+        return view('admin\editmodpack')->with(compact('modpack'));
     }
 
     protected function createuser(Request $request)
@@ -85,8 +108,91 @@ class AdminCPController extends Controller
                 'session' => '000',
                 'server' => '000',
             ]);
-            Session::flash('success', 'Your profile was updated.');
+            Session::flash('success', 'Pomyślnie utworzono użytkownika '.$request->input('name').'!');
             return Redirect::to('/admin/users');
+        }
+    }
+
+    protected function createarticle(Request $request)
+    {
+        $rules = [
+        ];
+
+        $messages = [
+            'name_first.required'   =>  'Your first name is required.',
+            'name_last.required'    =>  'Your last name is required.',
+            'email.required'        =>  'Your emails address is required.',
+            'email.unique'          =>  'That email address is already in use.',
+            'name.required'     =>  'Your username is required.',
+            'name.unique'       =>  'That username is already in use.'
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if($validator->fails())
+        {
+            return Redirect::to('/admin/articles/add')
+                ->withErrors($validator)
+                ->withInput();
+        }else{
+            $article = Article::create([
+                'owner' => 1,
+                'title' => $request->input('title'),
+                'text' => $request->input('text'),
+                'views' => 0
+            ]);
+            Session::flash('success', 'Your profile was updated.');
+            return Redirect::to('/admin/articles');
+        }
+    }
+
+    protected function createmodpack(Request $request)
+    {
+        $rules = [
+            'name' => 'required|string|regex:/^[a-zA-Z-0-9-_]+$/u|max:20|unique:users',
+        ];
+
+        $messages = [
+            'name_first.required'   =>  'Your first name is required.',
+            'name_last.required'    =>  'Your last name is required.',
+            'email.required'        =>  'Your emails address is required.',
+            'email.unique'          =>  'That email address is already in use.',
+            'name.required'     =>  'Your username is required.',
+            'name.unique'       =>  'That username is already in use.'
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if($validator->fails())
+        {
+            return Redirect::to('/admin/modpacks/add')
+                ->withErrors($validator)
+                ->withInput();
+        }else{
+            $user = Modpack::create([
+                'owner' => $request->input('owner'),
+                'name' => $request->input('name'),
+                'displayName' =>$request->input('displayName'),
+                'url' =>$request->input('url'),
+                'platformUrl' =>$request->input('platformUrl'),
+                'minecraft' =>$request->input('minecraft'),
+                'ratings' => 0,
+                'downloads' => 0,
+                'runs' => 0,
+                'description' =>$request->input('description'),
+                'tags' =>$request->input('tags'),
+                'isServer' =>$request->input('isServer'),
+                'isOfficial' =>$request->isOfficial,
+                'version' =>$request->input('version'),
+                'forceDir' =>$request->forceDir,
+                'feedUrl' =>$request->input('feedUrl'),
+                'iconUrl' =>$request->input('iconUrl'),
+                'logoUrl' =>$request->input('logoUrl'),
+                'backgroundUrl' =>$request->input('backgroundUrl'),
+                'solderUrl' =>$request->input('solderUrl'),
+            ]);
+            Session::flash('success', 'Your profile was updated.');
+            return Redirect::to('/admin/modpacks');
         }
     }
 
@@ -132,6 +238,89 @@ class AdminCPController extends Controller
         }
     }
 
+    public function updatemodpack(Request $request, $id)
+    {
+
+        $rules = [
+            'name' => 'required|string|regex:/^[a-zA-Z-0-9-_]+$/u|max:20|unique:users',
+        ];
+
+        $messages = [
+            'name_first.required' => 'Your first name is required.',
+            'name_last.required' => 'Your last name is required.',
+            'email.required' => 'Your emails address is required.',
+            'email.unique' => 'That email address is already in use.',
+            'name.required' => 'Your username is required.',
+            'name.unique' => 'That username is already in use.'
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            return Redirect::to('/admin/modpacks/edit/'.$id)
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+            $modpack = Modpack::find($id);
+            $modpack->owner = $request->input('owner');
+            $modpack->name = $request->input('name');
+            $modpack->displayName = $request->input('displayName');
+            $modpack->url = $request->input('url');
+            $modpack->platformUrl = $request->input('platformUrl');
+            $modpack->minecraft = $request->input('minecraft');
+            $modpack->ratings = $request->input('ratings');
+            $modpack->downloads = $request->input('downloads');
+            $modpack->runs = $request->input('runs');
+            $modpack->description = $request->input('description');
+            $modpack->tags = $request->input('tags');
+            $modpack->isServer = $request->input('isServer');
+            $modpack->isOfficial = $request->isOfficial;
+            $modpack->version = $request->input('version');
+            $modpack->forceDir = $request->forceDir;
+            $modpack->feedUrl = $request->input('feedUrl');
+            $modpack->iconUrl = $request->input('iconUrl');
+            $modpack->logoUrl = $request->input('logoUrl');
+            $modpack->backgroundUrl = $request->input('backgroundUrl');
+            $modpack->solderUrl = $request->input('solderUrl');
+            $modpack->save();
+
+            Session::flash('success', 'Your profile was updated.');
+            return Redirect::to('/admin/modpacks');
+        }
+    }
+
+    public function updatearticle(Request $request, $id)
+    {
+
+        $rules = [
+        ];
+
+        $messages = [
+            'name_first.required' => 'Your first name is required.',
+            'name_last.required' => 'Your last name is required.',
+            'email.required' => 'Your emails address is required.',
+            'email.unique' => 'That email address is already in use.',
+            'name.required' => 'Your username is required.',
+            'name.unique' => 'That username is already in use.'
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            return Redirect::to('/admin/articles/edit/'.$id)
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+            $article = Article::find($id);
+            $article->title = $request->input('title');
+            $article->text = $request->input('text');
+            $article->save();
+
+            Session::flash('success', 'Your profile was updated.');
+            return Redirect::to('/admin/articles');
+        }
+    }
+
     function deleteuser($id){
         if($id == 1) {
             abort(404);
@@ -142,15 +331,24 @@ class AdminCPController extends Controller
             $gmp->delete();
             $skin = Skin::find($id);
             $skin->delete();
+            Session::flash('success', 'Pomyślnie usunięto użytkownika!');
             return redirect('admin/users');
         }
 
+    }
+
+    function deletemodpack($id){
+            $modpack = Modpack::find($id);
+            $modpack->delete();
+        Session::flash('success', 'Pomyślnie usunięto paczkę modyfikacji!');
+            return redirect('admin/modpacks');
     }
 
     function deleteskin($id){
             $skin = Skin::find($id);
             $skin->skin = '0000000000000000000000000000000f';
             $skin->save();
+            Session::flash('success', 'Pomyślnie usunięto skórkę!');
             return redirect('admin/users');
 
     }
@@ -159,6 +357,7 @@ class AdminCPController extends Controller
         $skin = Skin::find($id);
         $skin->cape = '0000000000000000000000000000000f';
         $skin->save();
+        Session::flash('success', 'Pomyślnie usunięto pelerynkę!');
         return redirect('admin/users');
 
     }

@@ -11,12 +11,29 @@
 |
 */
 
+use App\Article;
+use App\Modpack;
+
 Route::get('/', function () {
-    return view('welcome');
+    $articles = Article::OrderBy('created_at', 'text')->paginate(3);
+    return view('welcome')->with(compact('articles'));
 });
 
-Auth::routes();
+Route::get('/modpacks', function () {
+    $modpacks = Modpack::paginate(6);
+    return view('modpacks')->with(compact('modpacks'));
+})->name('modpacks');
 
+
+///
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/editprofile', 'EditProfileController@index')->name('editprofile');
-Route::post('/editprofile', 'EditProfileController@update')->name('updateprofile');
+Route::get('/article/{id}', 'SiteController@articleview')->name('article-view');
+Route::get('/modpacks/modpack/{name}', 'SiteController@modpackView')->name('modpack-view');
+Route::get('/modpacks/modpack/{name}/star', 'SiteController@modpackStar')->name('modpack-star')->middleware('auth');
+Route::get('/modpacks/modpack/{name}/delstar', 'SiteController@modpackDelStar')->name('modpack-delstar')->middleware('auth');
+
+
+
+//USER ACCOUNT
+Auth::routes();
+Route::get('/settings', 'SettingsController@index')->name('settings');

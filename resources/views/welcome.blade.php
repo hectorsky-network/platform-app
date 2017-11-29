@@ -1,96 +1,24 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
+@section('content')
+    @include('layouts.slider')
+    <div class="container">
+        <div class="row align-items-start">
+            @include('layouts.partnerships')
+            @foreach ($articles as $article)
+                <div class="col-md-9" style="float:left;">
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><a href="{{ route('article-view',$article->id) }}">{{ $article->title }}</a> <p style="float:right;"><i class="fa fa-user" aria-hidden="true"></i> {{ App\User::where('id',$article->owner)->value('name') }} </p></div>
 
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                        <a href="{{ url('/editprofile') }}">Edycja profilu</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
+                        <div class="panel-body">
+                            <?php echo '<img src="'.route('gethead').'?u='.App\User::where('id',$article->owner)->value('name').'&s=80" style="float:right; border: 5px #dcdcdc solid; border-radius:3px; margin-left: 15px;"/>'.str_limit($article->text  , 560); ?>
+                        </div>
+                        <div style="padding: 2px 10px; border-top: 1px solid transparent; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; border-color: #d3e0e9; height:27px;">
+                            <div style="float:left"><a href="{{ route('article-view',$article->id) }}" class="btn btn-primary" style="padding: 1px 10px; font-size: 11px; margin-top: -3px;">Czytaj dalej... <i class="fa fa-arrow-right" aria-hidden="true"></i></a></div>
+                            <div style="float:right"><i class="fa fa-eye" aria-hidden="true"></i> {{ $article->views }} | <i class="fa fa-calendar" aria-hidden="true"></i> {{ $article->created_at }}</div>
+                        </div>
+                    </div>
                 </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
+            @endforeach
         </div>
-    </body>
-</html>
+    </div>
+@endsection

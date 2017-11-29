@@ -8,6 +8,9 @@
                     <div class="panel-heading">Lista użytkowników <a href="{{ route('admin-adduser') }}" class="btn btn-primary btn-sm" style="float:right; margin-top:-4px;">Dodaj użytkownika</a></div>
 
                     <div class="panel-body">
+                        @if (Session::has('success'))
+                            <div class="alert alert-success">{{ Session::get('success') }}</div>
+                        @endif
                         <table class="table table-sm table-striped table-responsive-3">
                             <thead>
                             <tr>

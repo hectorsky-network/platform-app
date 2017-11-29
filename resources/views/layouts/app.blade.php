@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Hector Platform - Uniwersalna platforma modyfikacji</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -30,22 +30,30 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        Hector Platform<sup style="font-size: 10px">v1.0-dev</sup>
                     </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        <li class="nav-item {{{ (Request::is('/') ? 'active' : '') }}}">
+                            <a class="nav-link" href="/"><i class="fa fa-home" aria-hidden="true"></i> Strona główna <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item {{{ (Request::is('launcher') ? 'active' : '') }}}">
+                            <a class="nav-link" href="/"><i class="fa fa-home" aria-hidden="true"></i> Launcher <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item {{{ (Request::is('modpacks') ? 'active' : '') }}}">
+                            <a class="nav-link" href="{{ route('modpacks') }}"><i class="fa fa-list" aria-hidden="true"></i> Paczki Modyfikacji <span class="sr-only">(current)</span></a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            <li><a href="{{ route('login') }}">Logowanie</a></li>
+                            <li><a href="{{ route('register') }}">Rejestracja</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
@@ -57,7 +65,7 @@
                                     <li><a href="{{ route('admin') }}">Panel Administracyjny</a></li>
                                        <li><hr></li>
                                     @endif
-                                    <li><a href="{{ route('editprofile') }}">Edycja profilu</a></li>
+                                    <li><a href="{{ route('settings') }}">Ustawienia konta</a></li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();

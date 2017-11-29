@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
+        <h2>Panel Administracyjny - Dodawanie nowego użytkownika</h2></br>
         <div class="row">
             <div class="col-md-8">
                 <div class="panel panel-default">
