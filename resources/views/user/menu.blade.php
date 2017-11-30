@@ -8,7 +8,7 @@
                     <a class="nav-link" href=""><i class="fa fa-user" aria-hidden="true"></i> Twój profil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href=""><i class="fa fa-th-list" aria-hidden="true"></i> Twoje paczki modyfikacji</a>
+                    <a class="nav-link" href="{{ route('modpacks-u') }}"><i class="fa fa-th-list" aria-hidden="true"></i> Twoje paczki modyfikacji</a>
                 </li>
                 <hr>
                 <li class="nav-item">

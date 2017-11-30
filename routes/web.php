@@ -37,3 +37,4 @@ Route::get('/modpacks/modpack/{name}/delstar', 'SiteController@modpackDelStar')-
 //USER ACCOUNT
 Auth::routes();
 Route::get('/settings', 'SettingsController@index')->name('settings');
+Route::get('/settings/modpacks', 'SettingsController@ownedModpacks')->name('modpacks-u');
