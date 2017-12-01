@@ -18,53 +18,53 @@ use Illuminate\Support\Facades\Validator;
 class AdminCPController extends Controller
 {
     function index(){
-            return view('admin\home');
+            return view('admin.home');
     }
 
     function users(){
         $users = User::all();
         $games = AuthServer::all();
         $skins = Skin::all();
-        return view('admin/users')->with(compact('users'))
+        return view('admin.users')->with(compact('users'))
             ->with(compact('games'))
             ->with(compact('skins'));
     }
 
     function articles(){
         $articles = Article::all();
-        return view('admin/articles')->with(compact('articles'));
+        return view('admin.articles')->with(compact('articles'));
     }
 
     function modpacks(){
         $modpacks = Modpack::all();
-        return view('admin/modpacks')->with(compact('modpacks'));
+        return view('admin.modpacks')->with(compact('modpacks'));
     }
 
     function adduser(){
-        return view('admin\adduser');
+        return view('admin.adduser');
     }
 
     function addarticle(){
-        return view('admin\addarticle');
+        return view('admin.addarticle');
     }
 
     function addmodpack(){
-        return view('admin\addmodpack');
+        return view('admin.addmodpack');
     }
 
     function edituser($id){
         $user = User::find($id);
-        return view('admin\edituser')->with(compact('user'));
+        return view('admin.edituser')->with(compact('user'));
     }
 
     function editarticle($id){
         $article = Article::find($id);
-        return view('admin\editarticle')->with(compact('article'));
+        return view('admin.editarticle')->with(compact('article'));
     }
 
     function editmodpack($id){
         $modpack = Modpack::find($id);
-        return view('admin\editmodpack')->with(compact('modpack'));
+        return view('admin.editmodpack')->with(compact('modpack'));
     }
 
     protected function createuser(Request $request)
