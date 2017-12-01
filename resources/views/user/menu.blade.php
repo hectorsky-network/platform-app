@@ -15,7 +15,7 @@
                     <a class="nav-link" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edycja profilu</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href=""><i class="fa fa-paint-brush" aria-hidden="true"></i> Edycja skórki</a>
+                    <a class="nav-link disabled" href="{{ route('skin') }}"><i class="fa fa-paint-brush" aria-hidden="true"></i> Edycja skórki</a>
                 </li>
             </ul>
         </div>

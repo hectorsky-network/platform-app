@@ -38,3 +38,5 @@ Route::get('/modpacks/modpack/{name}/delstar', 'SiteController@modpackDelStar')-
 Auth::routes();
 Route::get('/settings', 'SettingsController@index')->name('settings');
 Route::get('/settings/modpacks', 'SettingsController@ownedModpacks')->name('modpacks-u');
+Route::get('/settings/skin', 'SettingsController@changeSkin')->name('skin');
+Route::post('/settings/skin/update', 'SettingsController@updateSkin')->name('skin-u');

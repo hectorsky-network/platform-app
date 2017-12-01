@@ -6,6 +6,7 @@ use App\Modpack;
 use App\Skin;
 use App\User;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Storage;
 
 class LauncherController extends Controller
 {
@@ -89,7 +90,7 @@ class LauncherController extends Controller
         $view = isset($_GET['v']) ? substr($_GET['v'], 0, 1) : 'f';
         $view = in_array($view, array('f', 'l', 'r', 'b')) ? $view : 'f';
         $usrn = Skin::where('id',User::where('name',$userx)->value('id'))->value('skin');
-        $im = imagecreatefrompng("skins/".$usrn);
+        $im = imagecreatefrompng("../storage/app/public/skins/".$usrn);
         $av = imagecreatetruecolor($size, $size);
         $x = array('f' => 8, 'l' => 16, 'r' => 0, 'b' => 24);
         imagecopyresized($av, $im, 0, 0, $x[$view], 8, $size, $size, 8, 8);         // Face

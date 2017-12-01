@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class AdminCPController extends Controller
@@ -348,6 +349,9 @@ class AdminCPController extends Controller
             $skin = Skin::find($id);
             $skin->skin = '0000000000000000000000000000000f';
             $skin->save();
+        if($skin->skin !== "0000000000000000000000000000000f") {
+            Storage::delete('public/skins/'.$skin->skin);
+        }
             Session::flash('success', 'Pomyślnie usunięto skórkę!');
             return redirect('admin/users');
 
@@ -357,6 +361,9 @@ class AdminCPController extends Controller
         $skin = Skin::find($id);
         $skin->cape = '0000000000000000000000000000000f';
         $skin->save();
+        if($skin->cape !== "0000000000000000000000000000000f") {
+            Storage::delete('public/capes/'.$skin->cape);
+        }
         Session::flash('success', 'Pomyślnie usunięto pelerynkę!');
         return redirect('admin/users');
 

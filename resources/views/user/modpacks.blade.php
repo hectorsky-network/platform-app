@@ -49,7 +49,7 @@
                                         <td>{{ $modpack->downloads }}</td>
                                         <td>{{ $modpack->ratings }}</td>
                                         <td>{{ $modpack->runs }}</td>
-                                        <td><a class="btn btn-warning btn-sm" style="padding: 3px 10px;" href="{{ route('admin-editmodpack',$modpack->id) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a> <a style="padding: 3px 10px;" class="btn btn-danger btn-sm" href="{{ route('admin-delmodpack',$modpack->id) }}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                                        <td><a class="btn btn-warning btn-sm" style="padding: 3px 10px;" href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a> <a style="padding: 3px 10px;" class="btn btn-danger btn-sm" href="#"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                                     </tr>
                                 @endforeach
                                 </tbody>

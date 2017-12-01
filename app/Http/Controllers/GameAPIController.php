@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\AuthServer;
 use App\Skin;
 use App\User;
+use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Request;
 
 class GameAPIController extends Controller
@@ -28,13 +29,13 @@ class GameAPIController extends Controller
         if(Skin::where('id',AuthServer::where('uuid',$id)->value('id'))->value('cape') == '0000000000000000000000000000000f'){
             $response['textures'] = array(
                 'SKIN' => array(
-                    'url' => (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]/skins/".Skin::where('id',AuthServer::where('uuid',$id)->value('id'))->value('skin')));
+                    'url' => (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]".Storage::url('public/skins/'.Skin::where('id',AuthServer::where('uuid',$id)->value('id'))->value('skin'))));
         }else{
             $response['textures'] = array(
                 'SKIN' => array(
-                    'url' => (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]/skins/".Skin::where('id',AuthServer::where('uuid',$id)->value('id'))->value('skin')),
+                    'url' => (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]".Storage::url('public/skins/'.Skin::where('id',AuthServer::where('uuid',$id)->value('id'))->value('skin'))),
                 'CAPE' => array(
-                    'url' => (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]/capes/".Skin::where('id',AuthServer::where('uuid',$id)->value('id'))->value('cape'))
+                    'url' => (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]".Storage::url('public/capes/'.Skin::where('id',AuthServer::where('uuid',$id)->value('id'))->value('cape')))
             );
         }
         return json_encode($response);
