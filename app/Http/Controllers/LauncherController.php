@@ -36,52 +36,64 @@ class LauncherController extends Controller
 
     protected function getModpack($name){
 
-        if(Modpack::where('name',$name)->value('isServer') == 1){
-            $isServer = TRUE;
-        }else{
-            $isServer = FALSE;
-        }
-        if(Modpack::where('name',$name)->value('isOfficial') == 1){
-            $isOfficial = TRUE;
-        }else{
-            $isOfficial = FALSE;
-        }
-        if(Modpack::where('name',$name)->value('forceDir') == 1){
-            $forceDir = TRUE;
-        }else{
-            $forceDir = FALSE;
-        }
-        $response = array(
-            'id' => Modpack::where('name',$name)->value('id'),
-            'name' => Modpack::where('name',$name)->value('name'),
-            'displayName' => Modpack::where('name',$name)->value('displayName'),
-            'user' => User::where('id',Modpack::where('name',$name)->value('owner'))->value('name'),
-            'url' => Modpack::where('name',$name)->value('url'),
-            'platformUrl' => Modpack::where('name',$name)->value('platformUrl'),
-            'minecraft' => Modpack::where('name',$name)->value('minecraft'),
-            'ratings' => Modpack::where('name',$name)->value('ratings'),
-            'downloads' => Modpack::where('name',$name)->value('downloads'),
-            'runs' => Modpack::where('name',$name)->value('runs'),
-            'description' => Modpack::where('name',$name)->value('description'),
-            'tags' => Modpack::where('name',$name)->value('tags'),
-            'isServer' => $isServer,
-            'isOfficial' => $isOfficial,
-            'version' => Modpack::where('name',$name)->value('version'),
-            'forceDir' => $forceDir,
-        );
-        $response['feed'] = array();
-        $response['icon'] = array(
-            'url' => Modpack::where('name',$name)->value('iconUrl')
-        );
-        $response['logo'] = array(
-            'url' => Modpack::where('name',$name)->value('logoUrl')
-        );
-        $response['background'] = array(
-            'url' => Modpack::where('name',$name)->value('backgroundUrl')
-        );
-        $response['solder'] = Modpack::where('name',$name)->value('solderUrl');
-        $response['discordServerId'] = NULL;
-        return response()->json($response);
+    if(Modpack::where('name',$name)->value('isServer') == 1){
+        $isServer = TRUE;
+    }else{
+        $isServer = FALSE;
+    }
+    if(Modpack::where('name',$name)->value('isOfficial') == 1){
+        $isOfficial = TRUE;
+    }else{
+        $isOfficial = FALSE;
+    }
+    if(Modpack::where('name',$name)->value('forceDir') == 1){
+        $forceDir = TRUE;
+    }else{
+        $forceDir = FALSE;
+    }
+    $response = array(
+        'id' => Modpack::where('name',$name)->value('id'),
+        'name' => Modpack::where('name',$name)->value('name'),
+        'displayName' => Modpack::where('name',$name)->value('displayName'),
+        'user' => User::where('id',Modpack::where('name',$name)->value('owner'))->value('name'),
+        'url' => Modpack::where('name',$name)->value('url'),
+        'platformUrl' => Modpack::where('name',$name)->value('platformUrl'),
+        'minecraft' => Modpack::where('name',$name)->value('minecraft'),
+        'ratings' => Modpack::where('name',$name)->value('ratings'),
+        'downloads' => Modpack::where('name',$name)->value('downloads'),
+        'runs' => Modpack::where('name',$name)->value('runs'),
+        'description' => Modpack::where('name',$name)->value('description'),
+        'tags' => Modpack::where('name',$name)->value('tags'),
+        'isServer' => $isServer,
+        'isOfficial' => $isOfficial,
+        'version' => Modpack::where('name',$name)->value('version'),
+        'forceDir' => $forceDir,
+    );
+    $response['feed'] = array();
+    $response['icon'] = array(
+        'url' => Modpack::where('name',$name)->value('iconUrl')
+    );
+    $response['logo'] = array(
+        'url' => Modpack::where('name',$name)->value('logoUrl')
+    );
+    $response['background'] = array(
+        'url' => Modpack::where('name',$name)->value('backgroundUrl')
+    );
+    $response['solder'] = Modpack::where('name',$name)->value('solderUrl');
+    $response['discordServerId'] = NULL;
+    return response()->json($response);
+}
+
+    protected function addRun($name){
+        $modpack = Modpack::find(Modpack::where('name',$name)->value('id'));
+        $modpack->runs = $modpack->runs + 1;
+        $modpack->save();
+    }
+
+    protected function addInstall($name){
+        $modpack = Modpack::find(Modpack::where('name',$name)->value('id'));
+        $modpack->downloads = $modpack->downloads + 1;
+        $modpack->save();
     }
 
     protected function getHead(){
