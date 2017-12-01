@@ -18,7 +18,7 @@ class CreateModpacksTable extends Migration
             $table->bigInteger('owner')->default(1);
             $table->string('name');
             $table->string('displayName');
-            $table->string('url')->nullable();
+            $table->longText('url')->nullable();
             $table->string('platformUrl')->nullable();
             $table->string('minecraft');
             $table->bigInteger('ratings');
