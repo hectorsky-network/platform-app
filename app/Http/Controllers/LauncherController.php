@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 class LauncherController extends Controller
 {
     protected function launcherupdate(){
-        $build = 6;
+        $build = 8;
         $response = array(
             'build' => $build,
             'url' => array(
