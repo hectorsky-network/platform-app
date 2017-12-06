@@ -21,6 +21,12 @@ class AdminCPController extends Controller
             return view('admin.home');
     }
 
+    function articles(){
+        $articles = Article::all();
+        return view('admin.articles')->with(compact('articles'));
+    }
+
+    // List users
     function users(){
         $users = User::paginate(3);
         $games = AuthServer::paginate(3);
@@ -30,11 +36,7 @@ class AdminCPController extends Controller
             ->with(compact('skins'));
     }
 
-    function articles(){
-        $articles = Article::all();
-        return view('admin.articles')->with(compact('articles'));
-    }
-
+    // List modpacks
     function modpacks(){
         $modpacks = Modpack::all();
         return view('admin.modpacks')->with(compact('modpacks'));

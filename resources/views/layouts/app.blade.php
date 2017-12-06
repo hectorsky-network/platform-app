@@ -69,7 +69,6 @@
                                 <ul class="dropdown-menu">
                                     @if(Auth::user()->isAdmin == 1)
                                     <li><a href="{{ route('admin') }}">Panel Administracyjny</a></li>
-                                       <li><hr></li>
                                     @endif
                                     <li><a href="{{ route('settings') }}">Ustawienia konta</a></li>
                                     <li>

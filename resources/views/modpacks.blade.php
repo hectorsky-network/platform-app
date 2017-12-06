@@ -10,7 +10,7 @@
             @foreach ($modpacks as $modpack)
                 <div class="col-md-auto" style="float:left; width:372px; margin-right: 8px;">
                     <div class="panel panel-default">
-                        <div class="panel-heading">{{ $modpack->displayName }} <p style="float:right">{{ App\User::where('id',$modpack->owner)->value('name') }}</p></div>
+                        <div class="panel-heading">{{ $modpack->displayName }} <p style="float:right"><i class="fa fa-user" aria-hidden="true"></i> {{ App\User::where('id',$modpack->owner)->value('name') }}</p></div>
 
                         <div class="panel-body" style="padding:0">
                             <img src="<?php if($modpack->logoUrl == NULL){echo '/images/nologo.png';}else{echo $modpack->logoUrl;}?>" width="370" height="220"/>
