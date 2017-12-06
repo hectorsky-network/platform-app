@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 class LauncherController extends Controller
 {
     protected function launcherupdate(){
-        $build = 8;
+        $build = env('LAUNCHER_BUILD', 0);
         $response = array(
             'build' => $build,
             'url' => array(
@@ -33,6 +33,13 @@ class LauncherController extends Controller
                     'md5' => "EBF34784444ABCB976F77C9E23692057")));
         return response()->json($response);
     }
+
+    protected function discover(){
+        $modpacks = Modpack::OrderBy('ratings', 'downloads')->limit(3)->get();
+        return view('discover')->with(compact("modpacks"));
+    }
+
+
 
     protected function getModpack($name){
 

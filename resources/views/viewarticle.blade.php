@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('content')
     @include('layouts.slider')
-    <div class="container">
+    <div class="container" style="margin-top: -50px;">
         <div class="row align-items-start">
             @include('layouts.partnerships')
-                <div class="col-md-9" style="float:left;">
+                <div class="col-md-9" style="float:left; ">
                     <div class="panel panel-default">
                         <div class="panel-heading">{{ $article->title }} <p style="float:right;"><i class="fa fa-user" aria-hidden="true"></i> {{ App\User::where('id',$article->owner)->value('name') }} </p></div>
 

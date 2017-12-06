@@ -68,7 +68,8 @@
                         @if (Session::has('success'))
                             <div class="alert alert-success"><i class="fa fa-check-circle" aria-hidden="true"></i>  {{ Session::get('success') }}</div>
                         @endif
-                        <?php echo '<img src="'.$modpack->logoUrl.'" style="float:right; border: 5px #dcdcdc solid; border-radius:3px; margin-left: 15px;"/>'.$modpack->description; ?>
+                            <?php if($modpack->logoUrl == NULL){$modpacklogo = '/images/nologo.png';}else{$modpacklogo = $modpack->logoUrl;}?>
+                        <?php echo '<img src="'.$modpacklogo.'" style="float:right; border: 5px #dcdcdc solid; border-radius:3px; margin-left: 15px;"/>'.$modpack->description; ?>
                     </div>
                 </div>
             </div>

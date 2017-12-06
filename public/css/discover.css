@@ -1,0 +1,119 @@
+body {
+	background: #161a1d;
+	color: #FFF;
+	font-family: "Raleway";
+	font-weight: 300;
+}
+
+a {
+	text-decoration: none;
+	color: #428bca;
+}
+
+h2 {
+	font-family: "Raleway";
+	font-weight: 300;
+}
+
+img {
+	border: 0;
+}
+
+.trending-title {
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+
+.side-pack {
+	background: #1b2024;
+	padding: 8px;
+	margin-bottom: 16px;
+}
+
+.side-pack .pack-logo {
+	background-size: cover;
+	position: relative;
+}
+
+.side-pack .pack-logo a > img {
+	width: 255px;
+	height: 151px;
+	border: 0;
+}
+
+.side-pack .pack-logo:hover .pack-hover,
+.side-pack .pack-hover,
+.pack-logo:hover span.popup {
+	visibility: visible;
+}
+
+.side-pack .pack-hover {
+	width: 255px;
+	height: 101px;
+	background: transparent url(../images/discover/overlay.png);
+	text-align: center;
+	font-family: "Raleway";
+	color: #FFF;
+	visibility: hidden;
+	display: block;
+	padding-top: 50px;
+}
+
+.side-pack .pack-hover span.popup .popup-name {
+	font-size: 20px;
+}
+
+.side-pack .pack-hover span.popup .popup-view {
+	text-transform: uppercase;
+	font-size: 14px;
+}
+
+.main-image {
+	width: 890px;
+	float: left;
+	margin-right: 5px;
+}
+
+.sidebar {
+	float: left;
+}
+
+.bottom-main {
+	margin-top: 6px;
+}
+
+.bottom-main > div {
+	float: left;
+}
+
+.bottom-left {
+	margin-right: 8px;
+}
+
+.bottom-right {
+	width: 440px;
+	height: 172px;
+}
+
+.bottom-right .featured-title {
+	font-size: 16pt;
+}
+
+.modpack-title {
+	width: 420px;
+	padding: 10px;
+	background: #1b2024;
+	margin-bottom: 10px;
+}
+
+.modpack-title img {
+	width: 18px;
+	height: 18px;
+}
+
+.bottom-right .modpack-info {
+	background: #1b2024;
+	height: 100px;
+	font-size: 10pt;
+	padding: 10px;
+}

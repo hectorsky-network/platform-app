@@ -13,7 +13,7 @@
                         <div class="panel-heading">{{ $modpack->displayName }} <p style="float:right">{{ App\User::where('id',$modpack->owner)->value('name') }}</p></div>
 
                         <div class="panel-body" style="padding:0">
-                            <img src="{{ $modpack->logoUrl }}" width="370" height="220"/>
+                            <img src="<?php if($modpack->logoUrl == NULL){echo '/images/nologo.png';}else{echo $modpack->logoUrl;}?>" width="370" height="220"/>
                             <div style="padding: 15px;"><?php echo str_limit($modpack->description , 125); ?></div>
                         </div>
                         <div style="padding: 2px 10px; border-top: 1px solid transparent; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; border-color: #d3e0e9; height:27px;">

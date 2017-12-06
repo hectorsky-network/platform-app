@@ -22,9 +22,9 @@ class AdminCPController extends Controller
     }
 
     function users(){
-        $users = User::all();
-        $games = AuthServer::all();
-        $skins = Skin::all();
+        $users = User::paginate(3);
+        $games = AuthServer::paginate(3);
+        $skins = Skin::paginate(3);
         return view('admin.users')->with(compact('users'))
             ->with(compact('games'))
             ->with(compact('skins'));

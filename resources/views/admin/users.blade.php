@@ -73,6 +73,7 @@
                             @endforeach
                             </tbody>
                         </table>
+                            <center>{{ $users->links() }}</center>
                     </div>
                 </div>
             </div>
