@@ -35,7 +35,7 @@ class LauncherController extends Controller
     }
 
     protected function discover(){
-        $modpacks = Modpack::OrderBy('ratings', 'downloads')->limit(3)->get();
+        $modpacks = Modpack::OrderBy('downloads', 'ratings')->limit(3)->get();
         return view('discover')->with(compact("modpacks"));
     }
 
