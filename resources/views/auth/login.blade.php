@@ -1,7 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+    <div class="jumbotron jumbotron-fluid settings-bar">
+        <div class="container">
+            <h1 class="display-3">Logowanie</h1>
+            <p class="lead">Zaloguj się, aby uzyskać dostęp do wszystkich funkcji platformy.</p>
+        </div>
+    </div>
+    <div class="container" style="margin-top: -55px;">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">

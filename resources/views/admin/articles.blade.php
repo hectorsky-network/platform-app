@@ -1,7 +1,12 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container">
-        <h2>Panel Administracyjny - Zarządzanie artykułami</h2></br>
+    <div class="jumbotron jumbotron-fluid admincp-bar">
+        <div class="container">
+            <h1 class="display-3">Administrator - Aktualności</h1>
+            <p class="lead">Lista wszystkich aktualności wyświetlanych na stronie Aktualności.</p>
+        </div>
+    </div>
+    <div class="container" style="margin-top: -55px;">
         <div class="row">
             <div class="col-md-8">
                 <div class="panel panel-default">

@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/additional.css') }}" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 <body>
@@ -30,16 +31,13 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        Hector Platform<sup style="font-size: 10px">v1.0.1-dev</sup>
+                        Hector Platform<sup style="font-size: 10px">v1.0.2-development</sup>
                     </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://hectorwilde.com/"><i class="fa fa-home" aria-hidden="true"></i> Hector Universe <span class="sr-only">(current)</span></a>
-                        </li>
                         <li class="nav-item {{{ (Request::is('/') ? 'active' : '') }}}">
                             <a class="nav-link" href="/"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Aktualności <span class="sr-only">(current)</span></a>
                         </li>
@@ -49,8 +47,15 @@
                         <li class="nav-item {{{ (Request::is('modpacks') ? 'active' : '') }}}">
                             <a class="nav-link" href="{{ route('modpacks') }}"><i class="fa fa-list" aria-hidden="true"></i> Paczki Modyfikacji <span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://hectorwilde.com/forums"><i class="fa fa-comments" aria-hidden="true"></i> Społeczność <span class="sr-only">(current)</span></a>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                <i class="fa fa-star" aria-hidden="true"></i> Hector Universe <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu">
+                            <li><a class="nav-link" href="https://hectorwilde.com/"><i class="fa fa-home" aria-hidden="true"></i> Strona główna <span class="sr-only">(current)</span></a></li>
+                                <li><a class="nav-link" href="https://hectorwilde.com/forums"><i class="fa fa-comments" aria-hidden="true"></i> Społeczność <span class="sr-only">(current)</span></a></li>
+                            </ul>
                         </li>
                     </ul>
 

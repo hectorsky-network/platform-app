@@ -22,7 +22,8 @@ class SettingsController extends Controller
     }
 
     public function index(){
-        return view('user.settings');
+        $myModpacks = Modpack::where('owner',Auth::user()->id)->get();
+        return view('user.settings')->with(compact('myModpacks'));
     }
 
     public function updateSkin(){
@@ -32,6 +33,7 @@ class SettingsController extends Controller
         }else{
             $skinid = bin2hex(openssl_random_pseudo_bytes(16));
             $user = Skin::find(Auth::user()->id);
+            Storage::delete('public/skins/'.$user->skin);
             $user->skin = $skinid;
             $user->save();
             Storage::putFileAs('public/skins/', Input::file('skin'),$skinid);

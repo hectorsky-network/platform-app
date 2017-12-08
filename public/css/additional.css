@@ -1,0 +1,54 @@
+.profile-badges {
+    width: 90px;
+    float:right;
+    height: 90px;
+    background-color: #eee;
+    border-radius: 3px;
+    margin-right: 5px;
+}
+
+.avatar-article {
+    float:right;
+    border: 5px #dcdcdc solid;
+    border-radius:3px;
+    margin-left: 15px;
+
+}
+
+.avatar-profile{
+    float:left;
+    border: 5px #dcdcdc solid;
+    border-radius:3px;
+    margin-right: 11px;
+}
+
+.settings-bar{
+    margin-top: -25px;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,.6);
+    background:url('../images/bgs/settings_bg.jpg');
+    padding-bottom: 68px;
+}
+
+.modpacks-bar{
+    margin-top: -25px;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,.6);
+    background:url('../images/bgs/modpacks_bg.jpg');
+    padding-bottom: 68px;
+}
+
+.admincp-bar{
+    margin-top: -25px;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,.6);
+    background:url('../images/bgs/admincp_bg.jpg');
+    padding-bottom: 68px;
+}
+
+.badge-official{
+    background-color: #3cc133 !important;
+}
+.badge-server{
+    background-color: #3337c1 !important;
+}

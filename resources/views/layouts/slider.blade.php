@@ -1,6 +1,4 @@
-<div id="myCarousel" class="carousel slide" data-ride="carousel" style="margin-top:-25px; -webkit-box-shadow: 0px 11px 64px 0px rgba(0,0,0,0.75);
--moz-box-shadow: 0px 11px 64px 0px rgba(0,0,0,0.75);
-box-shadow: 0px 11px 64px 0px rgba(0,0,0,0.75);">
+<div id="myCarousel" class="carousel slide" data-ride="carousel" style="margin-top:-25px;">
 
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>

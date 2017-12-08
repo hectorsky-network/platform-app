@@ -1,11 +1,17 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container">
-        <h2>Panel użytkownika - Zmiana skórki</h2></br>
+    <div class="jumbotron jumbotron-fluid settings-bar">
+        <div class="container">
+            <h1 class="display-3">Zarządzanie skórkami<sup><span class="badge badge-danger">BETA</span></sup></h1>
+            <p class="lead">W tym miejscu możesz zmienić swoją skórkę w grze.</p>
+        </div>
+    </div>
+    <div class="container" style="margin-top: -55px;">
         <div class="row">
+            @include('user.menu')
             <div class="col-md-8">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Panel zmiany skórki (beta)</div>
+                    <div class="panel-heading">Panel zmiany skórki</div>
 
                     <div class="panel-body">
                         @if (session('status'))
@@ -47,7 +53,6 @@
                     </div>
                 </div>
             </div>
-            @include('user.menu')
         </div>
     </div>
 @endsection

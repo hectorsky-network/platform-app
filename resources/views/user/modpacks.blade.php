@@ -1,8 +1,14 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container">
-        <h2>Panel użytkownika - Paczki modyfikacji </h2></br>
+    <div class="jumbotron jumbotron-fluid settings-bar">
+        <div class="container">
+            <h1 class="display-3">Twoje paczki modyfikacji</h1>
+            <p class="lead">W tym miejscu znajdują się wszystkie twoje paczki modyfikacji, które umieściłeś na Hector Platform.</p>
+        </div>
+    </div>
+    <div class="container" style="margin-top: -55px;">
         <div class="row">
+            @include('user.menu')
             <div class="col-md-8">
                 <div class="panel panel-default">
                     <div class="panel-heading">Paczki modyfikacji</div>
@@ -57,7 +63,6 @@
                     </div>
                 </div>
             </div>
-            @include('user.menu')
         </div>
     </div>
 @endsection
