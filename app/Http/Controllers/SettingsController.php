@@ -27,7 +27,7 @@ class SettingsController extends Controller
 
     public function updateSkin(){
         list($width, $height) = getimagesize(Input::file('skin'));
-        if($height > 64 || $width > 64){
+        if($height > 128 || $width > 128){
             Session::flash('bad', 'Plik skórki jest za duży, musi on mieć przynajmniej rozmiar 64x32 i być w formacie PNG.');
         }else{
             $skinid = bin2hex(openssl_random_pseudo_bytes(16));
