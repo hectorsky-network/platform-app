@@ -33,7 +33,9 @@ class SettingsController extends Controller
         }else{
             $skinid = bin2hex(openssl_random_pseudo_bytes(16));
             $user = Skin::find(Auth::user()->id);
-            Storage::delete('public/skins/'.$user->skin);
+            if($user->skin !== "0000000000000000000000000000000f") {
+                Storage::delete('public/skins/' . $user->skin);
+            }
             $user->skin = $skinid;
             $user->save();
             Storage::putFileAs('public/skins/', Input::file('skin'),$skinid);
