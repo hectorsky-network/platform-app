@@ -54,7 +54,7 @@
 
                             <ul class="dropdown-menu">
                             <li><a class="nav-link" href="https://hectorwilde.com/"><i class="fa fa-home" aria-hidden="true"></i> Strona główna <span class="sr-only">(current)</span></a></li>
-                                <li><a class="nav-link" href="https://hectorwilde.com/forums"><i class="fa fa-comments" aria-hidden="true"></i> Społeczność <span class="sr-only">(current)</span></a></li>
+                                <li><a class="nav-link" href="https://forum.hectorwilde.com/"><i class="fa fa-comments" aria-hidden="true"></i> Społeczność <span class="sr-only">(current)</span></a></li>
                             </ul>
                         </li>
                     </ul>
