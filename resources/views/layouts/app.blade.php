@@ -31,7 +31,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        Hector Platform<sup style="font-size: 10px">v1.0.2-development</sup>
+                        Hector Platform<sup style="font-size: 10px">v1.0.3-development</sup>
                     </a>
                 </div>
 
@@ -53,8 +53,9 @@
                             </a>
 
                             <ul class="dropdown-menu">
-                            <li><a class="nav-link" href="https://hectorwilde.com/"><i class="fa fa-home" aria-hidden="true"></i> Strona główna <span class="sr-only">(current)</span></a></li>
-                                <li><a class="nav-link" href="https://forum.hectorwilde.com/"><i class="fa fa-comments" aria-hidden="true"></i> Społeczność <span class="sr-only">(current)</span></a></li>
+								<li><a class="nav-link" href="https://hectorwilde.com/"><i class="fa fa-home" aria-hidden="true"></i> Strona główna <span class="sr-only">(current)</span></a></li>
+								<li><a class="nav-link" href="https://forum.hectorwilde.com/"><i class="fa fa-comments" aria-hidden="true"></i> Społeczność <span class="sr-only">(current)</span></a></li>
+								<li><a class="nav-link" href="https://github.com/hector-freedom/"><i class="fa fa-github" aria-hidden="true"></i> GitHub <span class="sr-only">(current)</span></a></li>
                             </ul>
                         </li>
                     </ul>
