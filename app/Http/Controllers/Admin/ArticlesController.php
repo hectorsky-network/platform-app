@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Article;
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class ArticlesController extends Controller
 {
@@ -25,10 +26,21 @@ class ArticlesController extends Controller
         return view('admin.editing.editarticle')->with(compact('article'));
     }
 
+    // Delete modpacks
+    function delete($id){
+        $article = Article::find($id);
+        $article->delete();
+        Session::flash('success', 'Pomyślnie usunięto artykuł!');
+        return redirect('admin/articles');
+    }
+
     protected function create(Request $request)
     {
-
-        $validator = Validator::make($request->all());
+        $rules = [
+            'title' => 'required',
+            'text' => 'required',
+        ];
+        $validator = Validator::make($request->all(), $rules);
 
         if($validator->fails())
         {
@@ -49,7 +61,11 @@ class ArticlesController extends Controller
 
     public function update(Request $request, $id)
     {
-        $validator = Validator::make($request->all());
+        $rules = [
+            'title' => 'required',
+            'text' => 'required',
+        ];
+        $validator = Validator::make($request->all(),$rules);
 
         if ($validator->fails()) {
             return Redirect::to('/admin/articles/editing/'.$id)

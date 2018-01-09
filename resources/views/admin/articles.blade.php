@@ -30,7 +30,7 @@
                                     <td>{{ App\User::where('id',$article->owner)->value('name') }}</td>
                                     <td>{{ $article->title }}</td>
                                     <td>{{ $article->views }}</td>
-                                    <td><a class="btn btn-warning btn-sm" style="padding: 3px 10px;" href="{{ route('admin-editarticle',$article->id) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a> <a style="padding: 3px 10px;" class="btn btn-danger btn-sm" href="{{ route('admin-delmodpack',$article->id) }}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                                    <td><a class="btn btn-warning btn-sm" style="padding: 3px 10px;" href="{{ route('admin-editarticle',$article->id) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a> <a style="padding: 3px 10px;" class="btn btn-danger btn-sm" href="{{ route('admin-delarticle',$article->id) }}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                                 </tr>
                             @endforeach
                             </tbody>

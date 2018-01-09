@@ -43,6 +43,7 @@ Route::post('/admin/users/add', 'Admin\UsersController@create')->name('admin-add
 
 // Article Routes
 Route::get('/admin/articles/edit/{id}','Admin\ArticlesController@edit')->name('admin-editarticle')->middleware(['auth','admin']);
+Route::get('/admin/articles/delete/{id}','Admin\ArticlesController@delete')->name('admin-delarticle')->middleware(['auth','admin']);
 Route::get('/admin/articles/add', 'Admin\ArticlesController@add')->name('admin-addarticle')->middleware(['auth','admin']);
 
 // Article Posts
