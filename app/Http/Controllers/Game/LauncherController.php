@@ -10,8 +10,32 @@ use App\Http\Controllers\Controller;
 
 class LauncherController extends Controller
 {
-    protected function launcherupdate(){
-        $build = env('LAUNCHER_BUILD', 0);
+    protected function launcherstable(){
+        $build = env('LAUNCHER_BUILD_STABLE', 0);
+        $response = array(
+            'build' => $build,
+            'url' => array(
+                'exe'=>"https://cdn.hectorwilde.com/projects/hectorplatform/launcher/builds/".$build."/launcher-4.0-".$build.".exe",
+                'jar'=>"https://cdn.hectorwilde.com/projects/hectorplatform/launcher/builds/".$build."/launcher-4.0-".$build.".jar",
+                'osx'=>"https://cdn.hectorwilde.com/projects/hectorplatform/launcher/builds/".$build."/launcher-4.0-".$build."-osx.app.zip"),
+            'resources' => array(
+                array(
+                    'filename' => "OpenSans+Cyberbit.ttf",
+                    'url' => "https://cdn.hectorwilde.com/projects/hectorplatform/launcher/OpenSans+Cyberbit.ttf",
+                    'md5' => "94a9d4cbcb9ceaa25000fa303fa81acc"),
+                array(
+                    'filename' => "Raleway+FireflySung.ttf",
+                    'url' => "https://cdn.hectorwilde.com/projects/hectorplatform/launcher/Raleway+FireflySung.ttf",
+                    'md5' => "b62087eb4b11746987c800c0512890ef"),
+                array(
+                    'filename' => "aether-dep.jar",
+                    'url' => "https://cdn.hectorwilde.com/projects/hectorplatform/launcher/aether-dep.jar",
+                    'md5' => "EBF34784444ABCB976F77C9E23692057")));
+        return response()->json($response);
+    }
+
+    protected function launcherbeta(){
+        $build = env('LAUNCHER_BUILD_BLEEDING', 0);
         $response = array(
             'build' => $build,
             'url' => array(

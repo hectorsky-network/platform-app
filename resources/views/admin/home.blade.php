@@ -36,14 +36,49 @@
                                     <h3 style="margin-top:3px; font-size:14px;">{{ App\User::count() }}</h3></center>
                             </div>
                             <div class="profile-badges">
-                                <center><h2 style="margin-top:10px;"><i class="fa fa-list" aria-hidden="true"></i></h2>
+                                <center><h2 style="margin-top:10px;"><i class="fa fa-inbox" aria-hidden="true"></i></h2>
                                     <h3 style="margin-top:3px; font-size:14px;">{{ App\Modpack::count() }}</h3></center>
                             </div>
                     </div>
                 </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Informacje o systemie</div>
+
+                                <div class="panel-body">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">Parametr Systemu</th>
+                                            <th scope="col">Wartość</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <th scope="row">System operacyjny</th>
+                                            <td><?php echo (php_uname($mode='s').' '.php_uname($mode='r'));?></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Architektura</th>
+                                            <td><?php echo (php_uname($mode='m'));?></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Nazwa hosta</th>
+                                            <td><?php echo (php_uname($mode='n'));?></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Stabilna kompilacja launchera</th>
+                                            <td><?php echo env('LAUNCHER_BUILD_STABLE');?></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Rozwojowa kompilacja launchera</th>
+                                            <td><?php echo env('LAUNCHER_BUILD_BLEEDING');?></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
             </div>
             @include('admin.layouts.menu')
-            @include('admin.widgets.systeminfo')
         </div>
     </div>
 @endsection

@@ -35,7 +35,7 @@
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->isAdmin }}</td>
                                     <td>{{ $user->created_at }}</td>
-                                    <td><a class="btn btn-warning btn-sm" style="padding: 3px 10px;" href="{{ route('admin-edituser',$user->id) }}">EDYTUJ</a> <a style="padding: 3px 10px;" class="btn btn-danger btn-sm" href="{{ route('admin-deluser',$user->id) }}">USUŃ</a></td>
+                                    <td><a class="btn btn-warning btn-sm" style="padding: 3px 10px;" href="{{ route('admin-edituser',$user->id) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a> <a style="padding: 3px 10px;" class="btn btn-danger btn-sm" href="{{ route('admin-deluser',$user->id) }}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -83,7 +83,6 @@
                 </div>
             </div>
             @include('admin.layouts.menu')
-            @include('admin.widgets.systeminfo')
         </div>
     </div>
 @endsection

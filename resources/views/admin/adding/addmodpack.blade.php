@@ -269,7 +269,6 @@
                 </div>
             </div>
             @include('admin.layouts.menu')
-            @include('admin.widgets.systeminfo')
         </div>
     </div>
 @endsection

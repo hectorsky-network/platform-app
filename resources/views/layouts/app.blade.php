@@ -31,7 +31,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        Hector Platform<sup style="font-size: 10px">v1.1</sup>
+                        Hector Platform<sup style="font-size: 10px">v1.1.1</sup>
                     </a>
                 </div>
 
@@ -45,7 +45,7 @@
                             <a class="nav-link" href="https://wiki.hectorwilde.com/wiki/Hector_Platform#Pobieranie_launchera"><i class="fa fa-download" aria-hidden="true"></i> Launcher <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item {{{ (Request::is('modpacks') ? 'active' : '') }}}">
-                            <a class="nav-link" href="{{ route('modpacks') }}"><i class="fa fa-list" aria-hidden="true"></i> Paczki Modyfikacji <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="{{ route('modpacks') }}"><i class="fa fa-inbox" aria-hidden="true"></i> Paczki Modyfikacji <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
