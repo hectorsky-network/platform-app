@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+{!! NoCaptcha::renderJs('pl', true, 'recaptchaCallback') !!}
 @section('content')
     <div class="jumbotron jumbotron-fluid settings-bar">
         <div class="container">
@@ -66,7 +66,7 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
-
+                        {!! NoCaptcha::display() !!}
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
