@@ -1,5 +1,4 @@
 @extends('layouts.app')
-{!! NoCaptcha::renderJs('pl', true) !!}
 @section('content')
     <div class="jumbotron jumbotron-fluid settings-bar">
         <div class="container">
