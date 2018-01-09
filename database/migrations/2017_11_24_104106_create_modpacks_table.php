@@ -15,15 +15,15 @@ class CreateModpacksTable extends Migration
     {
         Schema::create('modpacks', function (Blueprint $table) {
             $table->increments('id');
-            $table->bigInteger('owner')->default(1);
+            $table->integer('owner');
             $table->string('name');
             $table->string('displayName');
             $table->longText('url')->nullable();
             $table->string('platformUrl')->nullable();
             $table->string('minecraft');
-            $table->bigInteger('ratings');
-            $table->bigInteger('downloads');
-            $table->bigInteger('runs');
+            $table->bigInteger('ratings')->default(0);
+            $table->bigInteger('downloads')->default(0);
+            $table->bigInteger('runs')->default(0);
             $table->longText('description')->nullable();
             $table->string('tags')->nullable();
             $table->boolean('isServer');

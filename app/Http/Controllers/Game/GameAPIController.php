@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Game;
 
 use App\AuthServer;
 use App\Skin;
 use App\User;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Request;
+use App\Http\Controllers\Controller;
 
 class GameAPIController extends Controller
 {

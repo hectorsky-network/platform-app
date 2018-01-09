@@ -15,11 +15,11 @@ class CreateGameProfileTable extends Migration
     {
         Schema::create('game_profiles', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('uuid');
-            $table->string('access_token',32);
-            $table->string('client_token',36);
-            $table->string('session',32);
-            $table->string('server',41);
+            $table->char('uuid');
+            $table->char('access_token',32)->nullable();
+            $table->string('client_token',36)->nullable();
+            $table->char('session',32)->nullable();
+            $table->string('server',41)->nullable();
             $table->timestamps();
         });
     }

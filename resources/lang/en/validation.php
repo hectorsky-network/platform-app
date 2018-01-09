@@ -87,6 +87,12 @@ return [
     'unique'               => 'The :attribute has already been taken.',
     'uploaded'             => 'The :attribute failed to upload.',
     'url'                  => 'The :attribute format is invalid.',
+    'name_first.required' => 'Your first name is required.',
+    'name_last.required' => 'Your last name is required.',
+    'email.required' => 'Your emails address is required.',
+    'email.unique' => 'That email address is already in use.',
+    'name.required' => 'Your username is required.',
+    'name.unique' => 'That username is already in use.',
 
     /*
     |--------------------------------------------------------------------------
@@ -102,6 +108,10 @@ return [
     'custom' => [
         'attribute-name' => [
             'rule-name' => 'custom-message',
+        ],
+        'g-recaptcha-response' => [
+            'required' => 'Please verify that you are not a robot.',
+            'captcha' => 'Captcha error! try again later or contact site admin.',
         ],
     ],
 

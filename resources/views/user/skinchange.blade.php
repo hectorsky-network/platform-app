@@ -8,7 +8,7 @@
     </div>
     <div class="container" style="margin-top: -55px;">
         <div class="row">
-            @include('user.menu')
+            @include('user.layouts.menu')
             <div class="col-md-8">
                 <div class="panel panel-default">
                     <div class="panel-heading">Panel zmiany skórki</div>

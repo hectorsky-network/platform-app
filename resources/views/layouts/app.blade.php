@@ -31,7 +31,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        Hector Platform<sup style="font-size: 10px">v1.0.3-development</sup>
+                        Hector Platform<sup style="font-size: 10px">v1.1</sup>
                     </a>
                 </div>
 

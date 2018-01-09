@@ -56,8 +56,8 @@
                     </div>
                 </div>
             </div>
-            @include('admin/menu')
-            @include('admin/systeminfo')
+            @include('admin.layouts.menu')
+            @include('admin.widgets.systeminfo')
         </div>
     </div>
 @endsection

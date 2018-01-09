@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Game;
 
 use App\Modpack;
 use App\Skin;
 use App\User;
 use Illuminate\Support\Facades\Response;
-use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\Controller;
 
 class LauncherController extends Controller
 {
@@ -36,7 +36,7 @@ class LauncherController extends Controller
 
     protected function discover(){
         $modpacks = Modpack::OrderBy('downloads', 'ratings')->limit(3)->get();
-        return view('discover')->with(compact("modpacks"));
+        return view('launcher.discover')->with(compact("modpacks"));
     }
 
 

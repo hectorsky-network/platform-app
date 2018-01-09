@@ -53,7 +53,7 @@ class RegisterController extends Controller
             'name' => 'required|string|regex:/^[a-zA-Z-0-9-_]+$/u|max:20|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'g-recaptcha-response' => 'required|captcha',
+         //   'g-recaptcha-response' => 'required|captcha',
         ]);
     }
 
@@ -77,10 +77,6 @@ class RegisterController extends Controller
          ]);
         $session_create = AuthServer::create([
             'uuid' => bin2hex(openssl_random_pseudo_bytes(16)),
-            'access_token' => '000',
-            'client_token' => '000',
-            'session' => '000',
-            'server' => '000',
         ]);
         return $user;
     }

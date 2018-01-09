@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Article;
 use App\AuthServer;
@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\Controller;
 
 class AdminCPController extends Controller
 {
@@ -26,6 +27,39 @@ class AdminCPController extends Controller
         return view('admin.articles')->with(compact('articles'));
     }
 
+    // List modpacks
+    function modpacks(){
+        $modpacks = Modpack::all();
+        return view('admin.modpacks')->with(compact('modpacks'));
+    }
+
+    function adduser(){
+        return view('admin.adding.adduser');
+    }
+
+    function addarticle(){
+        return view('admin.adding.addarticle');
+    }
+
+    function addmodpack(){
+        return view('admin.adding.addmodpack');
+    }
+
+    function edituser($id){
+        $user = User::find($id);
+        return view('admin.editing.edituser')->with(compact('user'));
+    }
+
+    function editarticle($id){
+        $article = Article::find($id);
+        return view('admin.editing.editarticle')->with(compact('article'));
+    }
+
+    function editmodpack($id){
+        $modpack = Modpack::find($id);
+        return view('admin.editing.editmodpack')->with(compact('modpack'));
+    }
+
     // List users
     function users(){
         $users = User::paginate(10);
@@ -36,39 +70,6 @@ class AdminCPController extends Controller
             ->with(compact('skins'));
     }
 
-    // List modpacks
-    function modpacks(){
-        $modpacks = Modpack::all();
-        return view('admin.modpacks')->with(compact('modpacks'));
-    }
-
-    function adduser(){
-        return view('admin.adduser');
-    }
-
-    function addarticle(){
-        return view('admin.addarticle');
-    }
-
-    function addmodpack(){
-        return view('admin.addmodpack');
-    }
-
-    function edituser($id){
-        $user = User::find($id);
-        return view('admin.edituser')->with(compact('user'));
-    }
-
-    function editarticle($id){
-        $article = Article::find($id);
-        return view('admin.editarticle')->with(compact('article'));
-    }
-
-    function editmodpack($id){
-        $modpack = Modpack::find($id);
-        return view('admin.editmodpack')->with(compact('modpack'));
-    }
-
     protected function createuser(Request $request)
     {
         $rules = [
@@ -77,16 +78,7 @@ class AdminCPController extends Controller
             'password' => 'required|string|min:6|confirmed',
         ];
 
-        $messages = [
-            'name_first.required'   =>  'Your first name is required.',
-            'name_last.required'    =>  'Your last name is required.',
-            'email.required'        =>  'Your emails address is required.',
-            'email.unique'          =>  'That email address is already in use.',
-            'name.required'     =>  'Your username is required.',
-            'name.unique'       =>  'That username is already in use.'
-        ];
-
-        $validator = Validator::make($request->all(), $rules, $messages);
+        $validator = Validator::make($request->all(), $rules);
 
         if($validator->fails())
         {
@@ -106,10 +98,6 @@ class AdminCPController extends Controller
             ]);
             $session_create = AuthServer::create([
                 'uuid' => bin2hex(openssl_random_pseudo_bytes(16)),
-                'access_token' => '000',
-                'client_token' => '000',
-                'session' => '000',
-                'server' => '000',
             ]);
             Session::flash('success', 'Pomyślnie utworzono użytkownika '.$request->input('name').'!');
             return Redirect::to('/admin/users');
@@ -118,19 +106,8 @@ class AdminCPController extends Controller
 
     protected function createarticle(Request $request)
     {
-        $rules = [
-        ];
 
-        $messages = [
-            'name_first.required'   =>  'Your first name is required.',
-            'name_last.required'    =>  'Your last name is required.',
-            'email.required'        =>  'Your emails address is required.',
-            'email.unique'          =>  'That email address is already in use.',
-            'name.required'     =>  'Your username is required.',
-            'name.unique'       =>  'That username is already in use.'
-        ];
-
-        $validator = Validator::make($request->all(), $rules, $messages);
+        $validator = Validator::make($request->all());
 
         if($validator->fails())
         {
@@ -139,7 +116,7 @@ class AdminCPController extends Controller
                 ->withInput();
         }else{
             $article = Article::create([
-                'owner' => 1,
+                'owner' => Auth::user()->id,
                 'title' => $request->input('title'),
                 'text' => $request->input('text'),
                 'views' => 0
@@ -152,19 +129,17 @@ class AdminCPController extends Controller
     protected function createmodpack(Request $request)
     {
         $rules = [
-            'name' => 'required|string|regex:/^[a-zA-Z-0-9-_]+$/u|max:20|unique:users',
+            'owner' => 'required|integer',
+            'name' => 'required|string|regex:/^[a-zA-Z-0-9-_]+$/u|max:20',
+            'displayName' => 'required|string',
+            'minecraft' => 'required|string',
+            'displayName' => 'required|string',
+            'isServer' => 'required',
+            'isOfficial' => 'required',
+            'version' => 'required',
         ];
 
-        $messages = [
-            'name_first.required'   =>  'Your first name is required.',
-            'name_last.required'    =>  'Your last name is required.',
-            'email.required'        =>  'Your emails address is required.',
-            'email.unique'          =>  'That email address is already in use.',
-            'name.required'     =>  'Your username is required.',
-            'name.unique'       =>  'That username is already in use.'
-        ];
-
-        $validator = Validator::make($request->all(), $rules, $messages);
+        $validator = Validator::make($request->all(), $rules);
 
         if($validator->fails())
         {
@@ -175,24 +150,21 @@ class AdminCPController extends Controller
             $user = Modpack::create([
                 'owner' => $request->input('owner'),
                 'name' => $request->input('name'),
-                'displayName' =>$request->input('displayName'),
-                'url' =>$request->input('url'),
-                'platformUrl' =>$request->input('platformUrl'),
-                'minecraft' =>$request->input('minecraft'),
-                'ratings' => 0,
-                'downloads' => 0,
-                'runs' => 0,
-                'description' =>$request->input('description'),
-                'tags' =>$request->input('tags'),
-                'isServer' =>$request->input('isServer'),
-                'isOfficial' =>$request->isOfficial,
-                'version' =>$request->input('version'),
-                'forceDir' =>$request->forceDir,
-                'feedUrl' =>$request->input('feedUrl'),
-                'iconUrl' =>$request->input('iconUrl'),
-                'logoUrl' =>$request->input('logoUrl'),
-                'backgroundUrl' =>$request->input('backgroundUrl'),
-                'solderUrl' =>$request->input('solderUrl'),
+                'displayName' => $request->input('displayName'),
+                'url' => $request->input('url'),
+                'platformUrl' => $request->input('platformUrl'),
+                'minecraft' => $request->input('minecraft'),
+                'description' => $request->input('description'),
+                'tags' => $request->input('tags'),
+                'isServer' => $request->input('isServer'),
+                'isOfficial' => $request->isOfficial,
+                'version' => $request->input('version'),
+                'forceDir' => $request->forceDir,
+                'feedUrl' => $request->input('feedUrl'),
+                'iconUrl' => $request->input('iconUrl'),
+                'logoUrl' => $request->input('logoUrl'),
+                'backgroundUrl' => $request->input('backgroundUrl'),
+                'solderUrl' => $request->input('solderUrl'),
             ]);
             Session::flash('success', 'Your profile was updated.');
             return Redirect::to('/admin/modpacks');
@@ -208,19 +180,10 @@ class AdminCPController extends Controller
             'password' => 'required|string|min:6',
         ];
 
-        $messages = [
-            'name_first.required' => 'Your first name is required.',
-            'name_last.required' => 'Your last name is required.',
-            'email.required' => 'Your emails address is required.',
-            'email.unique' => 'That email address is already in use.',
-            'name.required' => 'Your username is required.',
-            'name.unique' => 'That username is already in use.'
-        ];
-
-        $validator = Validator::make($request->all(), $rules, $messages);
+        $validator = Validator::make($request->all(), $rules);
 
         if ($validator->fails()) {
-            return Redirect::to('/admin/users/edit/'.$id)
+            return Redirect::to('/admin/users/editing/'.$id)
                 ->withErrors($validator)
                 ->withInput();
         } else {
@@ -248,19 +211,10 @@ class AdminCPController extends Controller
             'name' => 'required|string|regex:/^[a-zA-Z-0-9-_]+$/u|max:20|unique:users',
         ];
 
-        $messages = [
-            'name_first.required' => 'Your first name is required.',
-            'name_last.required' => 'Your last name is required.',
-            'email.required' => 'Your emails address is required.',
-            'email.unique' => 'That email address is already in use.',
-            'name.required' => 'Your username is required.',
-            'name.unique' => 'That username is already in use.'
-        ];
-
-        $validator = Validator::make($request->all(), $rules, $messages);
+        $validator = Validator::make($request->all(), $rules);
 
         if ($validator->fails()) {
-            return Redirect::to('/admin/modpacks/edit/'.$id)
+            return Redirect::to('/admin/modpacks/editing/'.$id)
                 ->withErrors($validator)
                 ->withInput();
         } else {
@@ -294,23 +248,10 @@ class AdminCPController extends Controller
 
     public function updatearticle(Request $request, $id)
     {
-
-        $rules = [
-        ];
-
-        $messages = [
-            'name_first.required' => 'Your first name is required.',
-            'name_last.required' => 'Your last name is required.',
-            'email.required' => 'Your emails address is required.',
-            'email.unique' => 'That email address is already in use.',
-            'name.required' => 'Your username is required.',
-            'name.unique' => 'That username is already in use.'
-        ];
-
-        $validator = Validator::make($request->all(), $rules, $messages);
+        $validator = Validator::make($request->all());
 
         if ($validator->fails()) {
-            return Redirect::to('/admin/articles/edit/'.$id)
+            return Redirect::to('/admin/articles/editing/'.$id)
                 ->withErrors($validator)
                 ->withInput();
         } else {
