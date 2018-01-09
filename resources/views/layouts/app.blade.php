@@ -101,5 +101,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    {!! NoCaptcha::renderJs() !!}
 </body>
 </html>
