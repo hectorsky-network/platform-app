@@ -31,7 +31,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        Hector Platform<sup style="font-size: 10px">v1.1.2</sup>
+                        Hector Platform<sup style="font-size: 10px">v1.1.3</sup>
                     </a>
                 </div>
 
@@ -42,7 +42,7 @@
                             <a class="nav-link" href="/"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Aktualności <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item {{{ (Request::is('launcher') ? 'active' : '') }}}">
-                            <a class="nav-link" href="https://wiki.hectorwilde.com/wiki/Hector_Platform#Pobieranie_launchera"><i class="fa fa-download" aria-hidden="true"></i> Launcher <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="https://hectorwilde.com/resources/categories/launcher.4/"><i class="fa fa-download" aria-hidden="true"></i> Launcher <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item {{{ (Request::is('modpacks') ? 'active' : '') }}}">
                             <a class="nav-link" href="{{ route('modpacks') }}"><i class="fa fa-inbox" aria-hidden="true"></i> Paczki Modyfikacji <span class="sr-only">(current)</span></a>
@@ -54,7 +54,7 @@
 
                             <ul class="dropdown-menu">
 								<li><a class="nav-link" href="https://hectorwilde.com/"><i class="fa fa-home" aria-hidden="true"></i> Strona główna <span class="sr-only">(current)</span></a></li>
-								<li><a class="nav-link" href="https://forum.hectorwilde.com/"><i class="fa fa-comments" aria-hidden="true"></i> Społeczność <span class="sr-only">(current)</span></a></li>
+								<li><a class="nav-link" href="https://hectorwilde.com/forums/"><i class="fa fa-comments" aria-hidden="true"></i> Społeczność <span class="sr-only">(current)</span></a></li>
 								<li><a class="nav-link" href="https://github.com/hector-freedom/"><i class="fa fa-github" aria-hidden="true"></i> GitHub <span class="sr-only">(current)</span></a></li>
                             </ul>
                         </li>
