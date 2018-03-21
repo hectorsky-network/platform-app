@@ -42,7 +42,7 @@
                             <a class="nav-link" href="/"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Aktualności <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item {{{ (Request::is('launcher') ? 'active' : '') }}}">
-                            <a class="nav-link" href="https://hectorwilde.com/resources/categories/launcher.4/"><i class="fa fa-download" aria-hidden="true"></i> Launcher <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="https://hectorwilde.com/files/file/1-hector-platform/"><i class="fa fa-download" aria-hidden="true"></i> Launcher <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item {{{ (Request::is('modpacks') ? 'active' : '') }}}">
                             <a class="nav-link" href="{{ route('modpacks') }}"><i class="fa fa-inbox" aria-hidden="true"></i> Paczki Modyfikacji <span class="sr-only">(current)</span></a>
