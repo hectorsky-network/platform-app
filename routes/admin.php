@@ -21,7 +21,6 @@ Route::post('/admin/modpacks/edit/{id}','Admin\ModpacksController@update')->name
 Route::get('/admin', 'Admin\AdminController@index')->name('admin')->middleware(['auth','admin']);
 Route::get('/admin/modpacks', 'Admin\ModpacksController@index')->name('admin-modpacks')->middleware(['auth','admin']);
 Route::get('/admin/users', 'Admin\UsersController@index')->name('admin-users')->middleware(['auth','admin']);
-Route::get('/admin/articles', 'Admin\ArticlesController@index')->name('admin-articles')->middleware(['auth','admin']);
 Route::get('/admin/settings', 'Admin\AdminController@index')->name('admin-settings')->middleware(['auth','admin']);
 
 
@@ -39,13 +38,3 @@ Route::get('/admin/users/cape/delete/{id}','Admin\UsersController@deletecape')->
 //Users Posts
 Route::post('/admin/users/edit/{id}','Admin\UsersController@update')->name('admin-edituser-1')->middleware(['auth','admin']);
 Route::post('/admin/users/add', 'Admin\UsersController@create')->name('admin-adduser-1')->middleware(['auth','admin']);
-
-
-// Article Routes
-Route::get('/admin/articles/edit/{id}','Admin\ArticlesController@edit')->name('admin-editarticle')->middleware(['auth','admin']);
-Route::get('/admin/articles/delete/{id}','Admin\ArticlesController@delete')->name('admin-delarticle')->middleware(['auth','admin']);
-Route::get('/admin/articles/add', 'Admin\ArticlesController@add')->name('admin-addarticle')->middleware(['auth','admin']);
-
-// Article Posts
-Route::post('/admin/articles/add', 'Admin\ArticlesController@create')->name('admin-addarticle-1')->middleware(['auth','admin']);
-Route::post('/admin/articles/edit/{id}','Articles\AdminCPController@update')->name('admin-editarticle-1')->middleware(['auth','admin']);

@@ -15,8 +15,7 @@ use App\Article;
 use App\Modpack;
 
 Route::get('/', function () {
-    $articles = Article::OrderBy('created_at', 'text')->paginate(3);
-    return view('welcome')->with(compact('articles'));
+    return view('welcome');
 });
 
 Route::get('/modpacks', function () {
@@ -27,7 +26,6 @@ Route::get('/modpacks', function () {
 
 ///
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/article/{id}', 'SiteController@articleview')->name('article-view');
 Route::get('/modpacks/modpack/{name}', 'SiteController@modpackView')->name('modpack-view');
 Route::get('/modpacks/modpack/{name}/star', 'SiteController@modpackStar')->name('modpack-star')->middleware('auth');
 Route::get('/modpacks/modpack/{name}/delstar', 'SiteController@modpackDelStar')->name('modpack-delstar')->middleware('auth');
@@ -40,3 +38,5 @@ Route::get('/settings', 'SettingsController@index')->name('settings');
 Route::get('/settings/modpacks', 'SettingsController@ownedModpacks')->name('modpacks-u');
 Route::get('/settings/skin', 'SettingsController@changeSkin')->name('skin');
 Route::post('/settings/skin/update', 'SettingsController@updateSkin')->name('skin-u');
+//Route::get('/settings/profile/{user}',  ['as' => 'user.editprofile', 'uses' => 'Auth\ProfileController@edit']);
+//Route::patch('/settings/profile/{user}/update',  ['as' => 'user.editprofile2', 'uses' => 'Auth\ProfileController@update']);

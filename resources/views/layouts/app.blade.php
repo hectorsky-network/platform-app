@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Hector Platform - Uniwersalna platforma modyfikacji</title>
+    <title>mcHub - Uniwersalna platforma modyfikacji</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -17,7 +17,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-inverse navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
 
@@ -31,7 +31,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        Hector Platform<sup style="font-size: 10px">v1.1.3</sup>
+                        <img src="../images/mcHub.png" style="float:left; margin-top: -5px;">
                     </a>
                 </div>
 
@@ -42,21 +42,13 @@
                             <a class="nav-link" href="/"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Aktualności <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item {{{ (Request::is('launcher') ? 'active' : '') }}}">
-                            <a class="nav-link" href="https://hectorwilde.com/files/file/1-hector-platform/"><i class="fa fa-download" aria-hidden="true"></i> Launcher <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="https://wiki.hectorwilde.com/Hector_Platform#Pobieranie_launchera"><i class="fa fa-download" aria-hidden="true"></i> Launcher <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item {{{ (Request::is('modpacks') ? 'active' : '') }}}">
                             <a class="nav-link" href="{{ route('modpacks') }}"><i class="fa fa-inbox" aria-hidden="true"></i> Paczki Modyfikacji <span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                <i class="fa fa-star" aria-hidden="true"></i> Hector Universe <span class="caret"></span>
-                            </a>
-
-                            <ul class="dropdown-menu">
-								<li><a class="nav-link" href="https://hectorwilde.com/"><i class="fa fa-home" aria-hidden="true"></i> Strona główna <span class="sr-only">(current)</span></a></li>
-								<li><a class="nav-link" href="https://hectorwilde.com/forums/"><i class="fa fa-comments" aria-hidden="true"></i> Społeczność <span class="sr-only">(current)</span></a></li>
-								<li><a class="nav-link" href="https://github.com/hector-freedom/"><i class="fa fa-github" aria-hidden="true"></i> GitHub <span class="sr-only">(current)</span></a></li>
-                            </ul>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://forums.hectorwilde.com/" target="_blank"><i class="fa fa-wrench" aria-hidden="true"></i> Forum wsparcia <span class="sr-only">(current)</span></a>
                         </li>
                     </ul>
 
@@ -96,7 +88,23 @@
             </div>
         </nav>
 
-        @yield('content')
+        @yield('content')<br>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 ">
+                        <div class="copyright-text">
+                            <p>Copyright © mcHub 2017-2018 HECTORWILDE.COM All Rights Reserved<br>
+                                sssh... mcHub is Open Source<br>
+                            mcHub <sup>v1.1.4-development</sup></p>
+
+                        </div>
+                    </div> <!-- End Col -->
+                </div>
+            </div>
+            <center><a href="http://www.smarthost.pl/partner?id=370"><img src="../images/sponsor/smarthost.png"/></a> <a href="https://jetbrains.com/"><img src="../images/sponsor/jetbrains.png"/></a></center>
+
+        </div>
     </div>
 
     <!-- Scripts -->

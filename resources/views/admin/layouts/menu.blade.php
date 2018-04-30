@@ -14,9 +14,6 @@
                     <a class="nav-link" href="{{ route('admin-modpacks') }}"><i class="fa fa-inbox" aria-hidden="true"></i> Paczki modyfikacji</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin-articles') }}"><i class="fa fa-file" aria-hidden="true"></i> Artykuły</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin-settings') }}"><i class="fa fa-cogs" aria-hidden="true"></i> Ustawienia systemu</a>
                 </li>
             </ul>

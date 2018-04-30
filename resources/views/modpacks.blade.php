@@ -3,7 +3,7 @@
     <div class="jumbotron jumbotron-fluid modpacks-bar">
         <div class="container">
             <h1 class="display-3">Paczki modyfikacji</h1>
-            <p class="lead">Tutaj możesz pobrac najnowsze paczki modyfikacji przeznaczone dla Hector Platform.</p>
+            <p class="lead">Tutaj możesz pobrać najnowsze paczki modyfikacji przeznaczone dla mcHub.</p>
         </div>
     </div>
     <div class="container" style="margin-top: -55px;">

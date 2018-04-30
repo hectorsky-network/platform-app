@@ -13,7 +13,7 @@
             <div class="container">
                 <div class="carousel-caption">
                     <h1>Stabilna Platforma</h1>
-                    <p>Hector Platform opiera się o stabilne fundamenty Technic Platform.</p>
+                    <p>mcHub opiera się o stabilne fundamenty Technic Platform.</p>
                 </div>
             </div>
         </div>
