@@ -22,7 +22,7 @@ class LegacySkinTranslatorController extends Controller
 	
 	public function cloakTranslate($name){
 		$cape = Skin::where('id',User::where('name',$name)->value('id'))->value('cape');
-		$im = imagecreatefrompng(public_path().'/storage/skins/'.$skin);
+		$im = imagecreatefrompng(public_path().'/storage/capes/'.$skin);
 		imagesavealpha($im,true);
 		header("Content-Type: image/png");
 		imagepng($im);
