@@ -5,13 +5,13 @@ namespace App\Http\Controllers\Game;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\AuthServer;
-use App\User;
 
-class LegacyAuthController extends Controller
+class LegacyAuth extends Controller
 {
     public function joinServer(){
-		if($_REQUEST['user'] === User::where('name',$_REQUEST['user'])->value('name')){
-		AuthServer::where('id',User::where('name',$_REQUEST['user'])->value('id'))->update(['session' => $_REQUEST['serverId'], 'server' => $_REQUEST['sessionId']]);
+		$idses = substr($_REQUEST['sessionId'], 6,32);
+		if($idses === AuthServer::where('access_token',$idses)->value('access_token')){
+		AuthServer::where('access_token',$idses)->update(['session' => $idses, 'server' => $_REQUEST['server']]);
 		echo 'OK';
 		}else{
 		echo 'Bad Login';
