@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\AuthServer;
 
-class LegacyAuth extends Controller
+class LegacyAuthController extends Controller
 {
     public function joinServer(){
 		$idses = substr($_REQUEST['sessionId'], 6,32);
