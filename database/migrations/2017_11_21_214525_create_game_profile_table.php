@@ -18,7 +18,7 @@ class CreateGameProfileTable extends Migration
             $table->char('uuid');
             $table->char('access_token',32)->nullable();
             $table->string('client_token',36)->nullable();
-            $table->char('session',32)->nullable();
+            $table->longtext('session')->nullable();
             $table->string('server',41)->nullable();
             $table->timestamps();
         });
