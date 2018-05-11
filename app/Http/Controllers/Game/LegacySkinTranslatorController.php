@@ -16,7 +16,6 @@ class LegacySkinTranslatorController extends Controller
 		imagesavealpha($im,true);
 		imagepng($im);
 		imagedestroy($im);
-		header('Content-Type: image/png');
 		return response($name)->header('Content-Type', 'image/png');
 
 	}
@@ -27,7 +26,6 @@ class LegacySkinTranslatorController extends Controller
 		imagesavealpha($im,true);
 		imagepng($im);
 		imagedestroy($im);
-		header('Content-Type: image/png');
 		return response($name)->header('Content-Type', 'image/png');
 	}
 }
