@@ -14,9 +14,9 @@ class LegacySkinTranslatorController extends Controller
 		$skin = Skin::where('id',User::where('name',$name)->value('id'))->value('skin');
 		$im = imagecreatefrompng(public_path().'/storage/skins/'.$skin);
 		imagesavealpha($im,true);
+		header("Content-Type: image/png");
 		imagepng($im);
 		imagedestroy($im);
-		return response($name)->header('Content-Type', 'image/png');
 
 	}
 	
@@ -24,8 +24,8 @@ class LegacySkinTranslatorController extends Controller
 		$cape = Skin::where('id',User::where('name',$name)->value('id'))->value('cape');
 		$im = imagecreatefrompng(public_path().'/storage/skins/'.$skin);
 		imagesavealpha($im,true);
+		header("Content-Type: image/png");
 		imagepng($im);
 		imagedestroy($im);
-		return response($name)->header('Content-Type', 'image/png');
 	}
 }
