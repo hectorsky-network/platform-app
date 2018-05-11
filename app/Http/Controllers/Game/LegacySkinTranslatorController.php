@@ -16,8 +16,6 @@ class LegacySkinTranslatorController extends Controller
 		imagesavealpha($im,true);
 		imagepng($im);
 		imagedestroy($im);
-		header('Content-Type: image/png');
-
 	}
 	
 	public function cloakTranslate($name){
@@ -26,6 +24,5 @@ class LegacySkinTranslatorController extends Controller
 		imagesavealpha($im,true);
 		imagepng($im);
 		imagedestroy($im);
-		header('Content-Type: image/png');
 	}
 }
