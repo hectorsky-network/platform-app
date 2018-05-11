@@ -13,3 +13,7 @@ Route::post('/authserver/refresh', 'Game\AuthServerController@refreshAuth');
 Route::get('/authserver/validate', 'Game\AuthServerController@validateAuth');
 Route::post('/authserver/validate', 'Game\AuthServerController@validateAuth');
 Route::post('/authserver/invalidate', 'Game\AuthServerController@invalidateAuth');
+
+//Legacy Auth
+Route::get('/login/joinserver', 'Game\LegacyAuthController@joinServer');
+Route::get('/login/checkserver', 'Game\LegacyAuthController@checkServer');
