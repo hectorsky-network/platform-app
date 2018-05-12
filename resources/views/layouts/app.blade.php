@@ -96,7 +96,7 @@
                         <div class="copyright-text">
                             <p>Copyright © mcHub 2017-2018 HECTORWILDE.COM All Rights Reserved<br>
                                 sssh... mcHub is Open Source<br>
-                            mcHub <sup>v1.1.4-development</sup></p>
+                            mcHub <sup>v1.2.1-dev</sup></p>
 
                         </div>
                     </div> <!-- End Col -->
