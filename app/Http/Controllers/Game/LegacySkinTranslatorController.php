@@ -11,21 +11,37 @@ use App\Skin;
 class LegacySkinTranslatorController extends Controller
 {
     public function skinTranslate($name){
-		$skin = Skin::where('id',User::where('name',$name)->value('id'))->value('skin');
-		$im = imagecreatefrompng(public_path().'/storage/skins/'.$skin);
-		imagesavealpha($im,true);
-		header("Content-Type: image/png");
-		imagepng($im);
-		imagedestroy($im);
+        if(isset($name)) {
+            $skin = Skin::where('id', User::where('name', $name)->value('id'))->value('skin');
+            if($skin !== NULL) {
+                $im = imagecreatefrompng(public_path() . '/storage/skins/' . $skin);
+                imagesavealpha($im, true);
+                header("Content-Type: image/png");
+                imagepng($im);
+                imagedestroy($im);
+            }else{
+                abort(404);
+            }
+        }else{
+            abort(404);
+        }
 
 	}
 	
 	public function cloakTranslate($name){
-		$cape = Skin::where('id',User::where('name',$name)->value('id'))->value('cape');
-		$im = imagecreatefrompng(public_path().'/storage/capes/'.$cape);
-		imagesavealpha($im,true);
-		header("Content-Type: image/png");
-		imagepng($im);
-		imagedestroy($im);
+        if(isset($name)) {
+            $cape = Skin::where('id', User::where('name', $name)->value('id'))->value('cape');
+            if($cape !== NULL) {
+                $im = imagecreatefrompng(public_path() . '/storage/capes/' . $cape);
+                imagesavealpha($im, true);
+                header("Content-Type: image/png");
+                imagepng($im);
+                imagedestroy($im);
+            }else{
+                abort(404);
+            }
+        }else{
+            abort(404);
+        }
 	}
 }

@@ -1,3 +1,2 @@
-Hector Platform Application
+mcHub Web Application
 ==========
-Full code of Hector Platform App build with Laravel.
