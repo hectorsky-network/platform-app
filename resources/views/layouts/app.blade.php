@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>mcHub - Uniwersalna platforma modyfikacji</title>
+    <title>mcHub - Najlepsza zamknięta platforma modyfikacji</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -31,7 +31,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        <img src="../images/mcHub.png" style="float:left; margin-top: -5px;">
+                        <img src="{{ asset('images/mcHub.png') }}" style="float:left; margin-top: -5px;">
                     </a>
                 </div>
 
@@ -39,7 +39,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         <li class="nav-item {{{ (Request::is('/') ? 'active' : '') }}}">
-                            <a class="nav-link" href="/"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Aktualności <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="/"><i class="fa fa-home" aria-hidden="true"></i> Strona główna <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item {{{ (Request::is('launcher') ? 'active' : '') }}}">
                             <a class="nav-link" href="https://hectorwilde.com/files/category/8-launcher/"><i class="fa fa-download" aria-hidden="true"></i> Launcher <span class="sr-only">(current)</span></a>
@@ -88,22 +88,22 @@
             </div>
         </nav>
 
-        @yield('content')<br>
+        @yield('content')
+        <center><a href="http://www.smarthost.pl/partner?id=370"><img src="{{ asset('images/sponsor/smarthost.png') }}"/></a> <a href="https://jetbrains.com/"><img src="{{ asset('images/sponsor/jetbrains.png') }}"/></a></center>
+        <br>
         <div class="footer-bottom">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6 ">
                         <div class="copyright-text">
-                            <p>Copyright © mcHub 2017-2018 HECTORWILDE.COM All Rights Reserved<br>
-                                sssh... mcHub is Open Source<br>
-                            mcHub <sup>v1.2.1-dev</sup></p>
+                            <p> mcHub<sup>v1.2.2</sup> | Made with ♥ by HECTORWILDE.COM<br>
+                                mcHub is not associated with Mojang AB. Minecraft is a Trademark of Mojang AB.
+                            </p>
 
                         </div>
                     </div> <!-- End Col -->
                 </div>
             </div>
-            <center><a href="http://www.smarthost.pl/partner?id=370"><img src="../images/sponsor/smarthost.png"/></a> <a href="https://jetbrains.com/"><img src="../images/sponsor/jetbrains.png"/></a></center>
-
         </div>
     </div>
 

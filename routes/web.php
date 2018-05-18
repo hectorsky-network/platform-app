@@ -18,6 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/about', function () {
+    return view('about');
+});
+
 Route::get('/modpacks', function () {
     $modpacks = Modpack::paginate(6);
     return view('modpacks')->with(compact('modpacks'));

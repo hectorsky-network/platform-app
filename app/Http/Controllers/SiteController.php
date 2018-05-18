@@ -13,15 +13,6 @@ use Illuminate\Support\Facades\Session;
 
 class SiteController extends Controller
 {
-    function articleView($id){
-       if(Article::where('id', '=', $id)->exists()){
-            $article = Article::find($id);
-            $article->views = $article->views + 1;
-            $article->save();
-            return view('viewarticle')->with(compact('article'));
-            }else{abort(404);}
-    }
-
     protected function modpackView($name){
         if (Modpack::where('id', '=', $name)->exists()) {
             $modpack = Modpack::find($name);
