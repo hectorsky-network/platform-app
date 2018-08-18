@@ -31,14 +31,14 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        <img src="{{ asset('images/mcHub.png') }}" style="float:left; margin-top: -5px;">
+                        <img src="{{ asset('mineWORK.png') }}" style="float:left; margin-top: -5px;">
                     </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        <li class="nav-item {{{ (Request::is('/') ? 'active' : '') }}}">
+                        <li class="nav-item" href="{{ url('/') }}">
                             <a class="nav-link" href="/"><i class="fa fa-home" aria-hidden="true"></i> Strona główna <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item {{{ (Request::is('launcher') ? 'active' : '') }}}">
