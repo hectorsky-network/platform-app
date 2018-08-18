@@ -96,8 +96,8 @@
                 <div class="row">
                     <div class="col-sm-6 ">
                         <div class="copyright-text">
-                            <p> mcHub<sup>v1.2.2</sup> | Made with ♥ by HECTORWILDE.COM<br>
-                                mcHub is not associated with Mojang AB. Minecraft is a Trademark of Mojang AB.
+                            <p> mineWORK<sup>v1.2.2</sup> | Made with ♥ by hector.pw Team<br>
+                                mineWORK is not associated with Mojang AB. Minecraft is a Trademark of Mojang AB.
                             </p>
 
                         </div>

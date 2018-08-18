@@ -32,7 +32,6 @@
                                     <th><i class="fa fa-download" aria-hidden="true"></i></th>
                                     <th><i class="fa fa-star" aria-hidden="true"></i></th>
                                     <th><i class="fa fa-play-circle-o" aria-hidden="true"></i></th>
-                                    <th>Zarządzanie</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -55,7 +54,6 @@
                                         <td>{{ $modpack->downloads }}</td>
                                         <td>{{ $modpack->ratings }}</td>
                                         <td>{{ $modpack->runs }}</td>
-                                        <td><a class="btn btn-warning btn-sm" style="padding: 3px 10px;" href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a> <a style="padding: 3px 10px;" class="btn btn-danger btn-sm" href="#"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                                     </tr>
                                 @endforeach
                                 </tbody>
