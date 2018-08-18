@@ -38,8 +38,8 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        <li class="nav-item" href="{{ url('/') }}">
-                            <a class="nav-link" href="/"><i class="fa fa-home" aria-hidden="true"></i> Strona główna <span class="sr-only">(current)</span></a>
+                        <li class="nav-item {{{ (Request::is('launcher') ? 'active' : '') }}}">
+                            <a class="nav-link" href="{{ url('/') }}"><i class="fa fa-home" aria-hidden="true"></i> Strona główna <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item {{{ (Request::is('launcher') ? 'active' : '') }}}">
                             <a class="nav-link" href="https://hectorwilde.com/files/category/8-launcher/"><i class="fa fa-download" aria-hidden="true"></i> Launcher <span class="sr-only">(current)</span></a>
