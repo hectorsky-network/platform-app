@@ -31,7 +31,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        <img src="{{ asset('mineWORK.png') }}" style="float:left; margin-top: -5px;">
+                        <img src="{{ asset('images/mineWORK.png') }}" style="float:left; margin-top: -5px;">
                     </a>
                 </div>
 
