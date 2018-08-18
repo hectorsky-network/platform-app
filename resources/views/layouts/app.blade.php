@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>mcHub - Najlepsza zamknięta platforma modyfikacji</title>
+    <title>mineWORK - Najlepsza zamknięta platforma modyfikacji</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
