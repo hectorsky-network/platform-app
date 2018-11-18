@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>mineWORK - Najlepsza zamknięta platforma modyfikacji</title>
+    <title>mcHub - Najlepsza zamknięta platforma modyfikacji</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -31,7 +31,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        <img src="{{ asset('images/mineWORK.png') }}" style="float:left; margin-top: -5px;">
+                        <img src="{{ asset('images/mcHub.png') }}" style="float:left; margin-top: -5px;">
                     </a>
                 </div>
 
@@ -96,8 +96,8 @@
                 <div class="row">
                     <div class="col-sm-6 ">
                         <div class="copyright-text">
-                            <p> mineWORK<sup>v1.2.2</sup> | Made with ♥ by hector.pw Team<br>
-                                mineWORK is not associated with Mojang AB. Minecraft is a Trademark of Mojang AB.
+                            <p> mcHub<sup>v1.2.3</sup> | Made with ♥ by Hectorsky Network<br>
+                                mcHub is not associated with Mojang AB. Minecraft is a Trademark of Mojang AB.
                             </p>
 
                         </div>

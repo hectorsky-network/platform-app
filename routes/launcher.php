@@ -16,3 +16,6 @@ Route::get('/api/discover', 'Game\LauncherController@discover');
 
 // Head generator
 Route::get('/api/head', 'Game\LauncherController@getHead')->name('gethead');
+
+// Get Modpack list
+Route::get('/api/modpack', 'Game\LauncherController@getModpackList');

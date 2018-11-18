@@ -148,4 +148,21 @@ class LauncherController extends Controller
         imagedestroy($av);
 
     }
+
+    protected function getModpackList(){
+        $modpacks = Modpack::where('isOfficial',1)->get();
+        $mpx = array();
+
+        foreach($modpacks as $modpack){
+            $mpx[$modpack->name] = $modpack->name.$modpack->displayName;
+        }
+
+        $response = array(
+            'modpacks' => array(),
+            'mirror_url' => 'http://mirror.technicpack.net/Technic/'
+        );
+        $response['modpacks'] = $mpx;
+
+        return response()->json($response);
+    }
 }
