@@ -2,7 +2,7 @@
 @section('content')
     <div class="jumbotron jumbotron-fluid home-bar">
         <div class="container">
-            <h1 class="display-5">mineWORK</h1>
+            <h1 class="display-5">mcHub</h1>
             <p class="lead">Najlepsza zamknięta platforma modyfikacji do gry Minecraft.</p>
             <div id="myCarousel" class="carousel slide launcher" data-ride="carousel">
 

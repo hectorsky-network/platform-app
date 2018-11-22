@@ -21,15 +21,15 @@ class LauncherController extends Controller
             'resources' => array(
                 array(
                     'filename' => "OpenSans+Cyberbit.ttf",
-                    'url' => "https://cdn.hectorwilde.com/projects/hectorplatform/launcher/OpenSans+Cyberbit.ttf",
+                    'url' => "https://mchub.hectorsky.net/storage/launcher/OpenSans+Cyberbit.ttf",
                     'md5' => "94a9d4cbcb9ceaa25000fa303fa81acc"),
                 array(
                     'filename' => "Raleway+FireflySung.ttf",
-                    'url' => "https://cdn.hectorwilde.com/projects/hectorplatform/launcher/Raleway+FireflySung.ttf",
+                    'url' => "https://mchub.hectorsky.net/storage/launcher/Raleway+FireflySung.ttf",
                     'md5' => "b62087eb4b11746987c800c0512890ef"),
                 array(
                     'filename' => "aether-dep.jar",
-                    'url' => "https://cdn.hectorwilde.com/projects/hectorplatform/launcher/aether-dep.jar",
+                    'url' => "https://mchub.hectorsky.net/storage/launcher/aether-dep.jar",
                     'md5' => "EBF34784444ABCB976F77C9E23692057")));
         return response()->json($response);
     }
@@ -45,15 +45,15 @@ class LauncherController extends Controller
             'resources' => array(
                 array(
                     'filename' => "OpenSans+Cyberbit.ttf",
-                    'url' => "https://cdn.hectorwilde.com/projects/hectorplatform/launcher/OpenSans+Cyberbit.ttf",
+                    'url' => "https://mchub.hectorsky.net/storage/launcher/OpenSans+Cyberbit.ttf",
                     'md5' => "94a9d4cbcb9ceaa25000fa303fa81acc"),
                 array(
                     'filename' => "Raleway+FireflySung.ttf",
-                    'url' => "https://cdn.hectorwilde.com/projects/hectorplatform/launcher/Raleway+FireflySung.ttf",
+                    'url' => "https://mchub.hectorsky.net/storage/launcher/Raleway+FireflySung.ttf",
                     'md5' => "b62087eb4b11746987c800c0512890ef"),
                 array(
                     'filename' => "aether-dep.jar",
-                    'url' => "https://cdn.hectorwilde.com/projects/hectorplatform/launcher/aether-dep.jar",
+                    'url' => "https://mchub.hectorsky.net/storage/launcher/aether-dep.jar",
                     'md5' => "EBF34784444ABCB976F77C9E23692057")));
         return response()->json($response);
     }
