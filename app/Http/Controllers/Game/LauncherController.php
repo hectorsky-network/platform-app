@@ -15,9 +15,9 @@ class LauncherController extends Controller
         $response = array(
             'build' => $build,
             'url' => array(
-                'exe'=>"https://cdn.hectorwilde.com/projects/hectorplatform/launcher/builds/".$build."/launcher-4.0-".$build.".exe",
-                'jar'=>"https://cdn.hectorwilde.com/projects/hectorplatform/launcher/builds/".$build."/launcher-4.0-".$build.".jar",
-                'osx'=>"https://cdn.hectorwilde.com/projects/hectorplatform/launcher/builds/".$build."/launcher-4.0-".$build."-osx.app.zip"),
+                'exe'=>"https://developer.hectorsky.net/mchub/launchers/build/".$build."/launcher-4.0-".$build.".exe",
+                'jar'=>"https://developer.hectorsky.net/mchub/launchers/build/".$build."/launcher-4.0-".$build.".jar",
+                'osx'=>"https://developer.hectorsky.net/mchub/launchers/build/".$build."/launcher-4.0-".$build."-osx.app.zip"),
             'resources' => array(
                 array(
                     'filename' => "OpenSans+Cyberbit.ttf",
@@ -39,9 +39,9 @@ class LauncherController extends Controller
         $response = array(
             'build' => $build,
             'url' => array(
-                'exe'=>"https://cdn.hectorwilde.com/projects/hectorplatform/launcher/builds/".$build."/launcher-4.0-".$build.".exe",
-                'jar'=>"https://cdn.hectorwilde.com/projects/hectorplatform/launcher/builds/".$build."/launcher-4.0-".$build.".jar",
-                'osx'=>"https://cdn.hectorwilde.com/projects/hectorplatform/launcher/builds/".$build."/launcher-4.0-".$build."-osx.app.zip"),
+                'exe'=>"https://developer.hectorsky.net/mchub/launchers/build/".$build."/launcher-4.0-".$build.".exe",
+                'jar'=>"https://developer.hectorsky.net/mchub/launchers/build/".$build."/launcher-4.0-".$build.".jar",
+                'osx'=>"https://developer.hectorsky.net/mchub/launchers/build/".$build."/launcher-4.0-".$build."-osx.app.zip"),
             'resources' => array(
                 array(
                     'filename' => "OpenSans+Cyberbit.ttf",
