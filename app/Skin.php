@@ -9,6 +9,6 @@ class Skin extends Model
     protected $table = 'skins';
 
     protected $fillable = [
-        'user_id','skin', 'cape'
+        'user_id','skin','skin_type', 'cape'
     ];
 }

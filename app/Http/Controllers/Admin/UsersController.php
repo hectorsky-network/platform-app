@@ -16,12 +16,19 @@ class UsersController extends Controller
 {
     // List users
     function index(){
-        $users = User::paginate(10);
-        $games = AuthServer::paginate(10);
-        $skins = Skin::paginate(10);
-        return view('admin.users')->with(compact('users'))
-            ->with(compact('games'))
-            ->with(compact('skins'));
+        $users = User::paginate(20);
+        return view('admin.users.users')->with(compact('users'));
+    }
+
+    protected function profile($id){
+        if (AuthServer::where('id', '=', $id)->exists()) {
+            $user = User::find($id);
+            $game = AuthServer::find($id);
+            $skin = Skin::find($id);
+            return view('admin.users.user')->with(compact('user'))->with(compact('game'))->with(compact('skin'));
+        }else{
+            return abort(404);
+        }
     }
 
     function add(){
@@ -52,6 +59,7 @@ class UsersController extends Controller
     function deleteskin($id){
         $skin = Skin::find($id);
         $skin->skin = '0000000000000000000000000000000f';
+        $skin->skin_type = 'steve';
         $skin->save();
         if($skin->skin !== "0000000000000000000000000000000f") {
             Storage::delete('public/skins/'.$skin->skin);
@@ -99,6 +107,7 @@ class UsersController extends Controller
             $playerskin = Skin::create([
                 'skin' => '0000000000000000000000000000000f',
                 'cape'=> '0000000000000000000000000000000f',
+                'skin_type'=> 'steve'
             ]);
             $session_create = AuthServer::create([
                 'uuid' => bin2hex(openssl_random_pseudo_bytes(16)),

@@ -23,14 +23,12 @@ Route::get('/admin/modpacks', 'Admin\ModpacksController@index')->name('admin-mod
 Route::get('/admin/users', 'Admin\UsersController@index')->name('admin-users')->middleware(['auth','admin']);
 Route::get('/admin/settings', 'Admin\AdminController@index')->name('admin-settings')->middleware(['auth','admin']);
 
-
-// User Routes
-Route::get('/admin/users/add', 'Admin\AdminCPController@adduser')->name('admin-adduser')->middleware(['auth','admin']);
-
-
 // User Account
+Route::get('/admin/users/add', 'Admin\UsersController@add')->name('admin-adduser')->middleware(['auth','admin']);
 Route::get('/admin/users/delete/{id}','Admin\UsersController@delete')->name('admin-deluser')->middleware(['auth','admin']);
 Route::get('/admin/users/edit/{id}','Admin\UsersController@edit')->name('admin-edituser')->middleware(['auth','admin']);
+Route::get('/admin/users/profile/{id}','Admin\UsersController@profile')->name('admin-viewuser')->middleware(['auth','admin']);
+
 // Delete users skin/cape
 Route::get('/admin/users/skin/delete/{id}','Admin\UsersController@deleteskin')->name('admin-delskin')->middleware(['auth','admin']);
 Route::get('/admin/users/cape/delete/{id}','Admin\UsersController@deletecape')->name('admin-delcape')->middleware(['auth','admin']);

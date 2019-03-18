@@ -67,6 +67,7 @@
                                 <ul class="dropdown-menu">
                                     @if(Auth::user()->isAdmin == 1)
                                     <li><a href="{{ route('admin') }}">Panel Administracyjny</a></li>
+                                        <li role="separator" class="divider"></li>
                                     @endif
                                     <li><a href="{{ route('settings') }}">Ustawienia konta</a></li>
                                     <li>
@@ -96,7 +97,7 @@
                 <div class="row">
                     <div class="col-sm-6 ">
                         <div class="copyright-text">
-                            <p> mcHub<sup>v1.2.3</sup> | Made with ♥ by Hectorsky Network<br>
+                            <p> mcHub<sup>v1.3.0</sup> | Made with ♥ by Hectorsky Network<br>
                                 mcHub is not associated with Mojang AB. Minecraft is a Trademark of Mojang AB.
                             </p>
 

@@ -16,6 +16,7 @@ class CreateSkinsTable extends Migration
         Schema::create('skins', function (Blueprint $table) {
             $table->increments('id');
             $table->char('skin')->nullable();
+            $table->string('skin_type')->nullable();
             $table->char('cape')->nullable();
             $table->timestamps();
         });

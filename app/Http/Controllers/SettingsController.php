@@ -37,6 +37,13 @@ class SettingsController extends Controller
                 Storage::delete('public/skins/' . $user->skin);
             }
             $user->skin = $skinid;
+
+            if(Input::get('skin_type') === '1')
+                $user->skin_type = 'slim';
+            else{
+                $user->skin_type = 'steve';
+            }
+
             $user->save();
             Storage::putFileAs('public/skins/', Input::file('skin'),$skinid);
             Session::flash('success', 'Pomyślnie zmieniono skórkę!');

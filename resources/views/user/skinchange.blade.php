@@ -33,6 +33,10 @@
                                     <label for="skin" class="col-md-4 control-label">Plik skórki</label>
                                     <div class="col-md-6">
                                         <input type="file" id="skin" name='skin' class="custom-file-input">
+                                        <div class="radio">
+                                            <label class="radio-inline"><input type="radio" name="skin_type" value="0" checked>Steve</label>
+                                            <label class="radio-inline"><input type="radio" name="skin_type" value="1">Alex</label>
+                                        </div>
                                         <span class="custom-file-control"></span>
                                         @if ($errors->has('skin'))
                                             <span class="help-block">

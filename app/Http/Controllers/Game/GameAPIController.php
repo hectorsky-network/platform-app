@@ -28,16 +28,37 @@ class GameAPIController extends Controller
             'profileName' => user::where('id',AuthServer::where('uuid',$id)->value('id'))->value('name')
         );
         if(Skin::where('id',AuthServer::where('uuid',$id)->value('id'))->value('cape') == '0000000000000000000000000000000f'){
-            $response['textures'] = array(
-                'SKIN' => array(
-                    'url' => (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]".Storage::url('public/skins/'.Skin::where('id',AuthServer::where('uuid',$id)->value('id'))->value('skin'))));
+            if(Skin::where('id',AuthServer::where('uuid',$id)->value('id'))->value('skin_type') == 'slim') {
+                $response['textures'] = array(
+                    'SKIN' => array(
+                        'url' => (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]" . Storage::url('public/skins/' . Skin::where('id', AuthServer::where('uuid', $id)->value('id'))->value('skin')),
+                        'metadata' => array(
+                            'model' => 'slim'
+                        )));
+            }else{
+
+                $response['textures'] = array(
+                    'SKIN' => array(
+                        'url' => (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]" . Storage::url('public/skins/' . Skin::where('id', AuthServer::where('uuid', $id)->value('id'))->value('skin'))));
+            }
+
         }else{
-            $response['textures'] = array(
+            if(Skin::where('id',AuthServer::where('uuid',$id)->value('id'))->value('skin_type') == 'slim') {
+                $response['textures'] = array(
+                    'SKIN' => array(
+                        'url' => (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]" . Storage::url('public/skins/' . Skin::where('id', AuthServer::where('uuid', $id)->value('id'))->value('skin')),
+                        'metadata' => array(
+                            'model' => 'slim')),
+                    'CAPE' => array(
+                        'url' => (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]" . Storage::url('public/capes/' . Skin::where('id', AuthServer::where('uuid', $id)->value('id'))->value('cape')))
+                );
+            }else{                $response['textures'] = array(
                 'SKIN' => array(
-                    'url' => (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]".Storage::url('public/skins/'.Skin::where('id',AuthServer::where('uuid',$id)->value('id'))->value('skin'))),
+                    'url' => (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]" . Storage::url('public/skins/' . Skin::where('id', AuthServer::where('uuid', $id)->value('id'))->value('skin'))),
                 'CAPE' => array(
-                    'url' => (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]".Storage::url('public/capes/'.Skin::where('id',AuthServer::where('uuid',$id)->value('id'))->value('cape')))
+                    'url' => (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]" . Storage::url('public/capes/' . Skin::where('id', AuthServer::where('uuid', $id)->value('id'))->value('cape')))
             );
+            }
         }
         return json_encode($response);
     }
