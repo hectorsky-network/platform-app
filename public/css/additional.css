@@ -1,3 +1,10 @@
+body {
+    margin-bottom: 60px;
+}
+html {
+    position: relative;
+    min-height: 100%;
+}
 .profile-badges {
     width: 90px;
     float:right;
@@ -35,7 +42,17 @@
     margin-top: -25px;
     color: #fff;
     text-shadow: 0 1px 2px rgba(0,0,0,.6);
-    background:url('../images/bgs/home.jpg') center;
+    background:url('../images/bgs/big/home.jpg') center;
+    padding-bottom: 68px;
+    text-align:center;
+    height: 865px;
+}
+
+.launcher-bar{
+    margin-top: -25px;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,.6);
+    background:url('../images/bgs/big/launcher.jpg') center;
     padding-bottom: 68px;
     text-align:center;
     height: 865px;
@@ -62,11 +79,6 @@
 }
 .badge-server{
     background-color: #3337c1 !important;
-}
-.footer-bottom {
-    padding: 40px 0 30px;
-    border-top: 1px solid #666;
-    background: #1e1e1e;
 }
 .copyright-text p {
     color: #ccc;
@@ -129,4 +141,16 @@
 @-o-keyframes fadein {
     from { opacity: 0; }
     to   { opacity: 1; }
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 66px;
+    background-color: #1e1e1e;;
+    padding-top: 10px;
+}
+.footer a {
+    color: #777;
 }

@@ -18,6 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/launcher', function () {
+    return view('launcher');
+});
+
 Route::get('/about', function () {
     return view('about');
 });

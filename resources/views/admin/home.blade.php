@@ -36,7 +36,7 @@
                                     <h3 style="margin-top:3px; font-size:14px;">{{ App\User::count() }}</h3></center>
                             </div>
                             <div class="profile-badges">
-                                <center><h2 style="margin-top:10px;"><i class="fa fa-inbox" aria-hidden="true"></i></h2>
+                                <center><h2 style="margin-top:10px;"><i class="fa fa-compass" aria-hidden="true"></i></h2>
                                     <h3 style="margin-top:3px; font-size:14px;">{{ App\Modpack::count() }}</h3></center>
                             </div>
                     </div>

@@ -35,7 +35,12 @@
                             <i class="fa fa-user" aria-hidden="true"></i> {{ Auth::user()->name }}<br>
                             <i class="fa fa-user-plus" aria-hidden="true"></i> {{ Auth::user()->created_at }}</br>
                             <i class="fa fa-id-card" aria-hidden="true"></i> {{ App\AuthServer::where('id',Auth::user()->id)->value('uuid') }} </br>
-                            <i class="fa fa-cog" aria-hidden="true"></i> {{ App\AuthServer::where('id',Auth::user()->id)->value('client_token') }}<br>
+                            <i class="fa fa-cog" aria-hidden="true"></i>
+                            @if(App\AuthServer::where('id',Auth::user()->id)->value('client_token') === NULL)
+                                Wykonaj pierwsze logowanie aby uzyskać swój client-token.<br>
+                            @else
+                                {{ App\AuthServer::where('id',Auth::user()->id)->value('client_token') }}
+                            @endif
                             <hr>
                             <i class="fa fa-id-card" aria-hidden="true"></i> Jest to twój unikalny identyfikator konta.<br>
                             <i class="fa fa-cog" aria-hidden="true"></i>  To jest twój ostatni zapisany w bazie identyfikator klienta

@@ -7,8 +7,8 @@
         </div>
     </div>
     <div class="container" style="margin-top: -55px;">
-        <cetner>
         <div class="row" style="margin: 0 auto;">
+            @if(count($modpacks) > 0)
             @foreach ($modpacks as $modpack)
                 <div class="col-md-auto" style="float:left; width:372px; margin-right: 8px;">
                     <div class="panel panel-default">
@@ -25,9 +25,17 @@
                     </div>
                 </div>
             @endforeach
-
+                <center>{{ $modpacks->links() }}</center>
+                @else
+                <div class="panel panel-default" style="text-align:center;">
+                    <div class="panel-body">
+                        <h1>Właściciel platformy nie dodał żadnej paczki modyfikacji!</h1>
+                        <h3>Wróć później...</h3>
+                        <p>Jeśli jesteś <b>administratorem</b> tej platformy mcHub, <b>zaloguj się</b> oraz przejdź do <b>Panel administracyjny -> Paczki modyfikacji</b> i dodaj jakąś paczkę modyfikacji!</p>
+                        <p><b>Przepraszamy za utrudnienia :-(</b></p>
+                    </div>
+                </div>
+            @endif
         </div>
-        <center>
-        <center>{{ $modpacks->links() }}</center>
     </div>
 @endsection

@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
-    <div class="jumbotron home-bar">
+    <div class="jumbotron jumbotron-fluid launcher-bar">
         <div class="container">
             <h1 class="display-5">Poznaj nasz launcher!</h1>
-            <p class="lead">Masz przed sobą najlepsze narzędzie do zarządzania paczkami modyfikacji. (za darmo!)</p>
+            <p class="lead">No może nie nasz, ale równie dobrze działający. :-)</p>
             <div id="launcherCarousel" class="carousel slide launcher" data-ride="carousel">
 
                 <ol class="carousel-indicators">
@@ -15,7 +15,7 @@
                 <div class="carousel-inner" role="listbox">
 
                     <div class="item active">
-                        <img class="first-slide" src="{{ asset('images/launchers/discover.png') }}" alt="First Slide" style="">
+                        <img class="first-slide" src="{{ asset('images/launchers/discover.png') }}" alt="First Slide">
                     </div>
 
                     <div class="item">
@@ -30,12 +30,14 @@
             </div>
         </div>
     </div>
-    <div class="jumbotron" style="margin-top:-29px; text-align:center;">
+    <div class="jumbotron jumbotron-fluid" style="margin-top:-29px; text-align:center;">
         <div class="container">
-            <h1 class="display-5">Kurde faja, na co jeszcze czekasz?</h1>
-            <p class="lead">Zarejestruj się, już teraz i pobierz nasz Launcher i wkrocz do świata nieskończonych możliwości.</p>
-            <a href="{{ route('register') }}"><button type="button" class="btn btn-danger">Dołącz do naszej platformy już teraz!</button></a> <a href="{{ route('modpacks') }}"><button type="button" class="btn btn-success">Jesteś już na pokładzie? Przejrzyj paczki modyfikacji.</button></a>
+            <h1 class="display-5">Pobierz już teraz!</h1>
+            <p class="lead">Nasz launcher jest dostępny na wszystkie wiodące platformy.</p>
+
+            <a href="#"><button type="button" class="btn-lg btn-primary"><i class="fa fa-windows"></i> Microsoft Windows (.exe)</button></a>
+            <a href="#"><button type="button" class="btn-lg btn-success"><i class="fa fa-apple"></i> Apple macOS (.app)</button></a>
+            <a href="#"><button type="button" class="btn-lg btn-danger"><i class="fa fa-linux"></i> Linux/Inne (.jar)</button></a>
         </div>
     </div>
-
 @endsection

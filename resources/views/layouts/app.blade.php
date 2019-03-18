@@ -38,14 +38,14 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        <li class="nav-item {{{ (Request::is('launcher') ? 'active' : '') }}}">
+                        <li class="nav-item {{{ (Request::is('/') ? 'active' : '') }}}">
                             <a class="nav-link" href="{{ url('/') }}"><i class="fa fa-home" aria-hidden="true"></i> Strona główna <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item {{{ (Request::is('launcher') ? 'active' : '') }}}">
-                            <a class="nav-link" href="https://hectorwilde.com/files/category/8-launcher/"><i class="fa fa-download" aria-hidden="true"></i> Launcher <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="/launcher"><i class="fa fa-download" aria-hidden="true"></i> Launcher <span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="nav-item {{{ (Request::is('modpacks') ? 'active' : '') }}}">
-                            <a class="nav-link" href="{{ route('modpacks') }}"><i class="fa fa-inbox" aria-hidden="true"></i> Paczki Modyfikacji <span class="sr-only">(current)</span></a>
+                        <li class="nav-item {{{ (Request::is('modpacks*') ? 'active' : '') }}}">
+                            <a class="nav-link" href="{{ route('modpacks') }}"><i class="fa fa-compass"></i> Paczki modyfikacji <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="https://hectorwilde.com/forums/" target="_blank"><i class="fa fa-wrench" aria-hidden="true"></i> Forum wsparcia <span class="sr-only">(current)</span></a>
@@ -56,25 +56,31 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a href="{{ route('login') }}"><i class="fa fa-sign-in" aria-hidden="true"></i> Logowanie</a></li>
-                            <li><a href="{{ route('register') }}"><i class="fa fa-pencil" aria-hidden="true"></i> Rejestracja</a></li>
+                            <li class="nav-item {{{ (Request::is('login') ? 'active' : '') }}}"><a href="{{ route('login') }}"><i class="fa fa-sign-in" aria-hidden="true"></i> Logowanie</a></li>
+                            <li class="nav-item {{{ (Request::is('register') ? 'active' : '') }}}"><a href="{{ route('register') }}"><i class="fa fa-pencil" aria-hidden="true"></i> Rejestracja</a></li>
                         @else
-                            <li class="dropdown">
+                            <li class="dropdown {{{ (Request::is('settings*') ? 'active' : '') }}}">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                     <i class="fa fa-address-card" aria-hidden="true"></i> {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu">
                                     @if(Auth::user()->isAdmin == 1)
-                                    <li><a href="{{ route('admin') }}">Panel Administracyjny</a></li>
+                                    <li><a href="{{ route('admin') }}"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Panel Administracyjny</a></li>
                                         <li role="separator" class="divider"></li>
                                     @endif
-                                    <li><a href="{{ route('settings') }}">Ustawienia konta</a></li>
+                                        <li><a href="{{ route('settings') }}"><i class="fa fa-user" aria-hidden="true"></i> Mój profil</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="{{ route('modpacks-u') }}"><i class="fa fa-compass" aria-hidden="true"></i> Moje paczki</a></li>
+                                        <li><a href="{{ route('skin') }}"><i class="fa fa-paint-brush" aria-hidden="true"></i> Zmiana skórki</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="{{ route('settings') }}"><i class="fa fa-cog" aria-hidden="true"></i> Ustawienia konta</a></li>
+                                        <li role="separator" class="divider"></li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Wyloguj
+                                            <i class="fa fa-sign-out" aria-hidden="true"></i> Wyloguj
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -92,22 +98,14 @@
         @yield('content')
         <center><a href="http://www.smarthost.pl/partner?id=370"><img src="{{ asset('images/sponsor/smarthost.png') }}"/></a> <a href="https://jetbrains.com/"><img src="{{ asset('images/sponsor/jetbrains.png') }}"/></a></center>
         <br>
-        <div class="footer-bottom">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6 ">
-                        <div class="copyright-text">
-                            <p> mcHub<sup>v1.3.0</sup> | Made with ♥ by Hectorsky Network<br>
-                                mcHub is not associated with Mojang AB. Minecraft is a Trademark of Mojang AB.
-                            </p>
-
-                        </div>
-                    </div> <!-- End Col -->
-                </div>
-            </div>
-        </div>
     </div>
-
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted"> mcHub<sup>v1.3.1</sup> | Made with <a style="color:red;">♥</a> by <a href="https://github.com/hectorsky-network" target="_blank">Hectorsky Network</a><br>
+                mcHub is not associated with Mojang AB. Minecraft is a Trademark of Mojang AB.
+            </p>
+        </div>
+    </footer>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     {!! NoCaptcha::renderJs() !!}
