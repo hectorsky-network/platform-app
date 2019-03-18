@@ -2,8 +2,8 @@
 @section('content')
     <div class="jumbotron home-bar">
         <div class="container">
-            <h1 class="display-5">Poznaj nasz launcher!</h1>
-            <p class="lead">Masz przed sobą najlepsze narzędzie do zarządzania paczkami modyfikacji. (za darmo!)</p>
+            <h1 class="display-5">mcHub</h1>
+            <p class="lead">Najlepsza zamknięta platforma z paczkami modyfikacji.</p>
             <div id="launcherCarousel" class="carousel slide launcher" data-ride="carousel">
 
                 <ol class="carousel-indicators">
