@@ -13,39 +13,55 @@ class AuthServerController extends Controller
         $launcheron = file_get_contents('php://input');
         $json = json_decode($launcheron, true);
         if (Auth::attempt(['email' => $json['username'], 'password' => $json['password']])) {
-            $id = Auth::user()->id;
-            $user = AuthServer::find($id);
-            $access_token = bin2hex(openssl_random_pseudo_bytes(16));
-            if(isset($json['clientToken'])){
-                $client_token = $json['clientToken'];
-            }else{
-                $client_token = bin2hex(openssl_random_pseudo_bytes(16));
-            }
-            $user->access_token = $access_token;
-            $user->client_token = $client_token;
-            $user->save();
+            if(Auth::user()->hasVerifiedEmail() !== FALSE) {
+                $id = Auth::user()->id;
+                $user = AuthServer::find($id);
+                $access_token = bin2hex(openssl_random_pseudo_bytes(16));
+                if (isset($json['clientToken'])) {
+                    $client_token = $json['clientToken'];
+                } else {
+                    $client_token = bin2hex(openssl_random_pseudo_bytes(16));
+                }
+                $user->access_token = $access_token;
+                $user->client_token = $client_token;
+                $user->save();
 
-            $response = array(
-                'accessToken' => $access_token,
-                'clientToken' =>  $client_token,
-            );
-            $response['selectedProfile'] = array(
-                'id' => AuthServer::where('client_token',$client_token)->value('uuid'),
-                'name' => Auth::user()->name
-            );
-            $response['availableProfiles'] = array(
-                array(
-                    'id' => AuthServer::where('client_token',$client_token)->value('uuid'),
-                    'name' => Auth::user()->name
-                )
-            );
-
-            if(isset($json['requestUser']) && $json['requestUser'] === true) {
-                $response['user'] = array(
-                    'id' => AuthServer::where('client_token',$client_token)->value('uuid')
+                $response = array(
+                    'accessToken' => $access_token,
+                    'clientToken' => $client_token,
                 );
+                $response['selectedProfile'] = array(
+                    'id' => AuthServer::where('client_token', $client_token)->value('uuid'),
+                    'name' => Auth::user()->name
+                );
+                $response['availableProfiles'] = array(
+                    array(
+                        'id' => AuthServer::where('client_token', $client_token)->value('uuid'),
+                        'name' => Auth::user()->name
+                    )
+                );
+
+                if (isset($json['requestUser']) && $json['requestUser'] === true) {
+                    $response['user'] = array(
+                        'id' => AuthServer::where('client_token', $client_token)->value('uuid')
+                    );
+                }
+                return response()->json($response);
+            }else{
+                $error = array(
+                    'error' => 'ForbiddenOperationException',
+                    'errorMessage' => 'Please verify your E-Mail address before authenticate.'
+                );
+
+                echo json_encode($error);
             }
-            return response()->json($response);
+        }else{
+            $error = array(
+                'error' => 'ForbiddenOperationException',
+                'errorMessage' => 'Invalid credentials. Invalid username or password.'
+            );
+
+            echo json_encode($error);
         }
     }
 
