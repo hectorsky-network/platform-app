@@ -104,7 +104,7 @@
     </div>
     <footer class="footer">
         <div class="container">
-            <p class="text-muted"> {{env("APP_NAME")}}<sup>v1.3.2</sup> | Made with <a style="color:red;">♥</a> by <a href="https://github.com/hectorsky-network" target="_blank">Hectorsky Network</a><br>
+            <p class="text-muted"> {{env("APP_NAME")}}<sup>v1.3.3</sup> | Made with <a style="color:red;">♥</a> by <a href="https://github.com/hectorsky-network" target="_blank">Hectorsky Network</a><br>
                 {{env("APP_NAME")}} is not associated with Mojang AB. Minecraft is a Trademark of Mojang AB.
             </p>
         </div>
