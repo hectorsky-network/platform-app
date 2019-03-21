@@ -15,10 +15,16 @@
 
                     <div class="panel-body">
                         @if (session('status'))
-                            <div class="alert alert-success">
+                            <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
                             </div>
                         @endif
+                        @if(Auth::user()->hasVerifiedEmail() === FALSE)
+                            <div class="alert alert-danger">
+                                <p>Twój adres E-Mail nie został zweryfikowany, funkcjonalnośc serwisu będzie ograniczona.</p>
+                            </div>
+                            @endif
+
                         <?php echo '<img src="'.route('gethead').'?u='.Auth::user()->name.'&s=80" class="avatar-profile" />';?>
                             <div class="profile-badges">
                                <center><h2 style="margin-top:10px;"><i class="fa fa-star" aria-hidden="true"></i></h2>

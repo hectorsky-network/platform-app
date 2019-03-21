@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>mcHub - Najlepsza zamknięta platforma modyfikacji</title>
+    <title>{{env("APP_NAME")}} - Najlepsza zamknięta platforma modyfikacji</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -75,6 +75,9 @@
                                         <li><a href="{{ route('skin') }}"><i class="fa fa-paint-brush" aria-hidden="true"></i> Zmiana skórki</a></li>
                                         <li role="separator" class="divider"></li>
                                         <li><a href="{{ route('settings') }}"><i class="fa fa-cog" aria-hidden="true"></i> Ustawienia konta</a></li>
+                                        @if(Auth::user()->hasVerifiedEmail() === FALSE)
+                                            <li><a href="{{ route('verification.notice') }}"><i class="fa fa-envelope-o" aria-hidden="true"></i> Weryfikacja E-Mail</a></li>
+                                        @endif
                                         <li role="separator" class="divider"></li>
                                     <li>
                                         <a href="{{ route('logout') }}"
@@ -101,8 +104,8 @@
     </div>
     <footer class="footer">
         <div class="container">
-            <p class="text-muted"> mcHub<sup>v1.3.1</sup> | Made with <a style="color:red;">♥</a> by <a href="https://github.com/hectorsky-network" target="_blank">Hectorsky Network</a><br>
-                mcHub is not associated with Mojang AB. Minecraft is a Trademark of Mojang AB.
+            <p class="text-muted"> {{env("APP_NAME")}}<sup>v1.3.2</sup> | Made with <a style="color:red;">♥</a> by <a href="https://github.com/hectorsky-network" target="_blank">Hectorsky Network</a><br>
+                {{env("APP_NAME")}} is not associated with Mojang AB. Minecraft is a Trademark of Mojang AB.
             </p>
         </div>
     </footer>

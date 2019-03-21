@@ -2,7 +2,7 @@
 @section('content')
     <div class="jumbotron home-bar">
         <div class="container">
-            <h1 class="display-5">mcHub</h1>
+            <h1 class="display-5">{{env("APP_NAME")}}</h1>
             <p class="lead">Najlepsza zamknięta platforma z paczkami modyfikacji.</p>
             <div id="launcherCarousel" class="carousel slide launcher" data-ride="carousel">
 

@@ -3,7 +3,7 @@
     <div class="jumbotron jumbotron-fluid settings-bar">
         <div class="container">
             <h1 class="display-3">Twoje paczki modyfikacji</h1>
-            <p class="lead">W tym miejscu znajdują się wszystkie twoje paczki modyfikacji, które umieściłeś na Hector Platform.</p>
+            <p class="lead">W tym miejscu znajdują się wszystkie twoje paczki modyfikacji, które umieściłeś na {{env("APP_NAME")}}.</p>
         </div>
     </div>
     <div class="container" style="margin-top: -55px;">

@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\AuthServer;
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Webpatser\Uuid\Uuid;
 use App\Skin;
 
 class RegisterController extends Controller
@@ -53,7 +53,7 @@ class RegisterController extends Controller
             'name' => 'required|string|regex:/^[a-zA-Z-0-9-_]+$/u|max:20|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-         //   'g-recaptcha-response' => 'required|captcha',
+            //'g-recaptcha-response' => 'required|captcha',
         ]);
     }
 
@@ -68,7 +68,7 @@ class RegisterController extends Controller
          $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+             'password' => Hash::make($data['password']),
              'isAdmin' => 0
         ]);
          $playerskin = Skin::create([
@@ -78,6 +78,7 @@ class RegisterController extends Controller
         $session_create = AuthServer::create([
             'uuid' => bin2hex(openssl_random_pseudo_bytes(16)),
         ]);
+
         return $user;
     }
 }

@@ -16,6 +16,7 @@ class SettingsController extends Controller
     {
         $this->middleware('auth');
     }
+
     public function ownedModpacks(){
         $myModpacks = Modpack::where('owner',Auth::user()->id)->get();
         return view('user.modpacks')->with(compact('myModpacks'));

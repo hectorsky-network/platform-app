@@ -7,6 +7,11 @@
                 <li class="nav-item {{{ (Request::is('settings') ? 'active' : '') }}}">
                     <a class="nav-link" href="{{ route('settings') }}"><i class="fa fa-user" aria-hidden="true"></i> Twój profil</a>
                 </li>
+                @if(Auth::user()->hasVerifiedEmail() === FALSE)
+                <li class="nav-item {{{ (Request::is('email/verify') ? 'active' : '') }}}">
+                    <a class="nav-link disabled" href="{{ route('verification.notice') }}"><i class="fa fa-envelope-o" aria-hidden="true"></i> Weryfikacja E-Mail</a>
+                </li>
+                @endif
                 <hr>
                 <li class="nav-item {{{ (Request::is('settings/modpacks') ? 'active' : '') }}}">
                     <a class="nav-link" href="{{ route('modpacks-u') }}"><i class="fa fa-compass" aria-hidden="true"></i> Twoje paczki modyfikacji</a>
