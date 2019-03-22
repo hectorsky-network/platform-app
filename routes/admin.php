@@ -2,7 +2,7 @@
 
 // Modpacks Routes
 Route::get('/admin/modpacks/add', 'Admin\ModpacksController@add')->name('admin.modpacks.add.form')->middleware(['auth','admin']);
-Route::get('/admin/modpacks/delete/{id}','Admin\ModpacksController@delete')->name('admin.modpacks.remove')->middleware(['auth','admin']);
+Route::get('/admin/modpacks/delete/{id}','Admin\ModpacksController@delete')->name('admin.modpacks.delete')->middleware(['auth','admin']);
 Route::get('/admin/modpacks/edit/{id}','Admin\ModpacksController@edit')->name('admin.modpacks.edit.form')->middleware(['auth','admin']);
 
 //Modpack Posts
