@@ -32,9 +32,9 @@ Route::get('/modpacks', function () {
 Auth::routes(['verify' => true]);
 ///
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/modpacks/modpack/{name}', 'SiteController@modpackView')->name('modpack.view');
-Route::get('/modpacks/modpack/{name}/star', 'SiteController@modpackStar')->name('modpack.star')->middleware('auth');
-Route::get('/modpacks/modpack/{name}/delstar', 'SiteController@modpackDelStar')->name('modpack.star.delete')->middleware('auth');
+Route::get('/modpacks/modpack/{name}', 'SiteController@modpackView')->name('modpacks.view');
+Route::get('/modpacks/modpack/{name}/star', 'SiteController@modpackStar')->name('modpacks.star')->middleware('auth');
+Route::get('/modpacks/modpack/{name}/delstar', 'SiteController@modpackDelStar')->name('modpacks.star.delete')->middleware('auth');
 
 
 

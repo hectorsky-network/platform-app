@@ -15,11 +15,11 @@
                         <div class="panel-heading">{{ $modpack->displayName }} <p style="float:right">@if($modpack->isOfficial == 1)<span class="badge badge-official">Oficjalna</span>@endif  @if($modpack->isServer == 1)<span class="badge badge-server">Serwerowa</span>@endif</p></div>
 
                         <div class="panel-body" style="padding:0">
-                            <a href="{{ route('modpack-view',$modpack->id) }}"><img src="<?php if($modpack->logoUrl == NULL){echo '/images/nologo.png';}else{echo $modpack->logoUrl;}?>" width="370" height="220"/></a>
+                            <a href="{{ route('modpacks.view',$modpack->id) }}"><img src="<?php if($modpack->logoUrl == NULL){echo '/images/nologo.png';}else{echo $modpack->logoUrl;}?>" width="370" height="220"/></a>
                             <div style="padding: 15px;"><?php echo str_limit($modpack->description , 125); ?></div>
                         </div>
                         <div style="padding: 2px 10px; border-top: 1px solid transparent; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; border-color: #d3e0e9; height:27px;">
-                            <div style="float:left"><a href="{{ route('modpack-view',$modpack->id) }}"  class="btn btn-success" style="padding: 1px 10px; font-size: 11px; margin-top: -3px;">Więcej informacji i pobieranie...</a></div>
+                            <div style="float:left"><a href="{{ route('modpacks.view',$modpack->id) }}"  class="btn btn-success" style="padding: 1px 10px; font-size: 11px; margin-top: -3px;">Więcej informacji i pobieranie...</a></div>
                             <div style="float:right"><i class="fa fa-user" aria-hidden="true"></i> {{ App\User::where('id',$modpack->owner)->value('name') }}</div>
                         </div>
                     </div>

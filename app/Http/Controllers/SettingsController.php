@@ -93,7 +93,7 @@ class SettingsController extends Controller
         }
 
         if ($id == 'all'){
-            if(!empty($user->client_token) AND !empty($user->client_token_2) AND !empty($user->client_token_3)){
+            if(!empty($user->client_token) OR !empty($user->client_token_2) OR !empty($user->client_token_3)){
                 $user->access_token = NULL;
                 $user->client_token = NULL;
                 $user->access_token_2 = NULL;

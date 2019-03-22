@@ -16,9 +16,9 @@
                             @if($user = Illuminate\Support\Facades\Auth::user())
                             <span class="input-group-btn">
                                 @if(App\Star::where('givenBy', '=', Illuminate\Support\Facades\Auth::user()->id)->where('givenTo', '=', $modpack->id)->exists())
-                                    <a href="{{ route('modpack-delstar',$modpack->id) }}" class="btn btn-danger"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+                                    <a href="{{ route('modpacks.star.delete',$modpack->id) }}" class="btn btn-danger"><i class="fa fa-star-o" aria-hidden="true"></i></a>
                                     @else
-                                <a href="{{ route('modpack-star',$modpack->id) }}" class="btn btn-primary"><i class="fa fa-star" aria-hidden="true"></i></a>
+                                <a href="{{ route('modpacks.star',$modpack->id) }}" class="btn btn-primary"><i class="fa fa-star" aria-hidden="true"></i></a>
                                     @endif
                                 @if($modpack->url != NULL)
                                     <a href="{{$modpack->url}}" class="btn btn-success"><i class="fa fa-download" aria-hidden="true"></i></a>
