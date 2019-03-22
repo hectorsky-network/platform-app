@@ -5,11 +5,11 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Kreator edycji profilu użytkownika <a href="{{ route('admin-users') }}" class="btn btn-primary btn-sm" style="float:right; margin-top:-4px;">Wróć</a></div>
+                    <div class="panel-heading">Kreator edycji profilu użytkownika <a href="{{ route('admin.users') }}" class="btn btn-primary btn-sm" style="float:right; margin-top:-4px;">Wróć</a></div>
 
                     <div class="panel-body">
                         <p>Witaj w kreatorze edycji profilu użytkownika</p>
-                        <form class="form-horizontal" method="POST" action="{{ route('admin-edituser-1',$user->id) }}">
+                        <form class="form-horizontal" method="POST" action="{{ route('admin.users.edit',$user->id) }}">
                             {{ csrf_field() }}
 
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">

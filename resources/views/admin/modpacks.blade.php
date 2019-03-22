@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Lista Paczek modyfikacji <a href="{{ route('admin-addmodpack') }}" class="btn btn-primary btn-sm" style="float:right; margin-top:-4px;">Dodaj paczkę modyfikacji</a></div>
+                    <div class="panel-heading">Lista Paczek modyfikacji <a href="{{ route('admin.modpacks.add.form') }}" class="btn btn-primary btn-sm" style="float:right; margin-top:-4px;">Dodaj paczkę modyfikacji</a></div>
 
                     <div class="panel-body">
                         <table class="table table-sm table-striped table-responsive-3">
@@ -48,7 +48,7 @@
                                     <td>{{ $modpack->downloads }}</td>
                                     <td>{{ $modpack->ratings }}</td>
                                     <td>{{ $modpack->runs }}</td>
-                                    <td><a class="btn btn-warning btn-sm" style="padding: 3px 10px;" href="{{ route('admin-editmodpack',$modpack->id) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a> <a style="padding: 3px 10px;" class="btn btn-danger btn-sm" href="{{ route('admin-delmodpack',$modpack->id) }}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                                    <td><a class="btn btn-warning btn-sm" style="padding: 3px 10px;" href="{{ route('admin.modpacks.edit.form',$modpack->id) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a> <a style="padding: 3px 10px;" class="btn btn-danger btn-sm" href="{{ route('admin.modpacks.delete',$modpack->id) }}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                                 </tr>
                             @endforeach
                             </tbody>

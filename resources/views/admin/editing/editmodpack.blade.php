@@ -5,11 +5,11 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Kreator edycji paczki modyfikacji <a href="{{ route('admin-modpacks') }}" class="btn btn-primary btn-sm" style="float:right; margin-top:-4px;">Wróć</a></div>
+                    <div class="panel-heading">Kreator edycji paczki modyfikacji <a href="{{ route('admin.modpacks') }}" class="btn btn-primary btn-sm" style="float:right; margin-top:-4px;">Wróć</a></div>
 
                     <div class="panel-body">
                         <p>Witaj w kreatorze edycji paczki modyfikacji.</p>
-                        <form class="form-horizontal" method="POST" action="{{ route('admin-editmodpack-1',$modpack->id) }}">
+                        <form class="form-horizontal" method="POST" action="{{ route('admin.modpacks.edit',$modpack->id) }}">
                             {{ csrf_field() }}
 
                             <div class="form-group{{ $errors->has('owner') ? ' has-error' : '' }}">

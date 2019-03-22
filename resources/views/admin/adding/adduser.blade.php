@@ -10,11 +10,11 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Kreator dodawania nowego użytkownika <a href="{{ route('admin-users') }}" class="btn btn-primary btn-sm" style="float:right; margin-top:-4px;">Wróć</a></div>
+                    <div class="panel-heading">Kreator dodawania nowego użytkownika <a href="{{ route('admin.users') }}" class="btn btn-primary btn-sm" style="float:right; margin-top:-4px;">Wróć</a></div>
 
                     <div class="panel-body">
                         <p>Witaj w kreatorze tworzenia nowego użytkownika</p>
-                        <form class="form-horizontal" method="POST" action="{{ route('admin-adduser-1') }}">
+                        <form class="form-horizontal" method="POST" action="{{ route('admin.users.add') }}">
                             {{ csrf_field() }}
 
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">

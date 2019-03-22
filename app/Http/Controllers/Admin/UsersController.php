@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\AuthServer;
+use App\Modpack;
 use App\Skin;
 use App\User;
 use Illuminate\Http\Request;
@@ -20,17 +21,6 @@ class UsersController extends Controller
         return view('admin.users.users')->with(compact('users'));
     }
 
-    protected function profile($id){
-        if (AuthServer::where('id', '=', $id)->exists()) {
-            $user = User::find($id);
-            $game = AuthServer::find($id);
-            $skin = Skin::find($id);
-            return view('admin.users.user')->with(compact('user'))->with(compact('game'))->with(compact('skin'));
-        }else{
-            return abort(404);
-        }
-    }
-
     function add(){
         return view('admin.adding.adduser');
     }
@@ -38,6 +28,73 @@ class UsersController extends Controller
     function edit($id){
         $user = User::find($id);
         return view('admin.editing.edituser')->with(compact('user'));
+    }
+
+    protected function profile($id){
+        if (AuthServer::where('id', '=', $id)->exists()) {
+            $user = User::find($id);
+            $game = AuthServer::find($id);
+            $skin = Skin::find($id);
+            $myModpacks = Modpack::where('owner',$id)->get();
+            return view('admin.users.user')->with(compact('user'))->with(compact('game'))->with(compact('skin'))->with(compact('myModpacks'));
+        }else{
+            return abort(404);
+        }
+    }
+
+    public function invalidateToken($id, $id2)
+    {
+        $user = AuthServer::find($id);
+
+        if ($id2 == 1){
+            if(!empty($user->client_token)){
+                $user->access_token = NULL;
+                $user->client_token = NULL;
+                $user->save();
+                return redirect('/admin/users/profile/'.$id)->with('status', 'Usuniętego urządzenie numer 1');
+            }else{
+                return redirect('/admin/users/profile/'.$id)->with('status', 'Nie można unieważnić pustego tokena.');
+            }
+        }
+        if ($id2 == 2){
+            if(!empty($user->client_token_2)){
+                $user->access_token_2 = NULL;
+                $user->client_token_2 = NULL;
+                $user->save();
+                return redirect('/admin/users/profile/'.$id)->with('status', 'Usuniętego urządzenie numer 2');
+            }else{
+                return redirect('/admin/users/profile/'.$id)->with('status', 'Nie można unieważnić pustego tokena.');
+            }
+        }
+        if ($id2 == 3){
+            if(!empty($user->client_token_3)){
+                $user->access_token_3 = NULL;
+                $user->client_token_3 = NULL;
+                $user->save();
+                return redirect('/admin/users/profile/'.$id)->with('status', 'Usuniętego urządzenie numer 1');
+            }else{
+                return redirect('/admin/users/profile/'.$id)->with('status', 'Nie można unieważnić pustego tokena.');
+            }
+        }
+
+        if ($id2 == 'all'){
+            if(!empty($user->client_token) OR !empty($user->client_token_2) OR !empty($user->client_token_3)){
+                $user->access_token = NULL;
+                $user->client_token = NULL;
+                $user->access_token_2 = NULL;
+                $user->client_token_2 = NULL;
+                $user->access_token_3 = NULL;
+                $user->client_token_3 = NULL;
+                $user->save();
+                return redirect('/admin/users/profile/'.$id)->with('status', 'Uneiważniono wszystkie tokeny!');
+            }else{
+                return redirect('/admin/users/profile/'.$id)->with('status', 'Nie można unieważnić pustych tokenów.');
+            }
+        }
+
+        if(empty($id2) OR $id2 > 3){
+            return redirect('/admin/users/profile/'.$id)->with('status', 'Podany token nie istnieje');
+        }
     }
 
     function delete($id){

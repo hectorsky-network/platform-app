@@ -40,7 +40,11 @@
                                         @if(App\AuthServer::where('id',Auth::user()->id)->value('access_token') === NULL)
                                             <td>Brak</td>
                                         @else
-                                            <td>{{ App\AuthServer::where('id',Auth::user()->id)->value('access_token') }}</td>
+                                            @if(App\AuthServer::where('id',Auth::user()->id)->value('access_token') === App\AuthServer::where('id',Auth::user()->id)->value('play_token') )
+                                                <td><span class="badge badge-official">{{ App\AuthServer::where('id',Auth::user()->id)->value('access_token') }}</span></td>
+                                            @else
+                                                <td>{{ App\AuthServer::where('id',Auth::user()->id)->value('access_token') }}</td>
+                                            @endif
                                         @endif
                                         <td><a class="btn btn-danger btn-xs" href="{{ route('user.tokens.invalidate',1 )}}">UNIEWAŻNIJ</a></td>
                                     </tr>
@@ -54,7 +58,11 @@
                                         @if(App\AuthServer::where('id',Auth::user()->id)->value('access_token_2') === NULL)
                                             <td>Brak</td>
                                         @else
-                                            <td>{{ App\AuthServer::where('id',Auth::user()->id)->value('access_token_2') }}</td>
+                                            @if(App\AuthServer::where('id',Auth::user()->id)->value('access_token_2') === App\AuthServer::where('id',Auth::user()->id)->value('play_token') )
+                                                <td><span class="badge badge-official">{{ App\AuthServer::where('id',Auth::user()->id)->value('access_token_2') }}</span></td>
+                                            @else
+                                                <td>{{ App\AuthServer::where('id',Auth::user()->id)->value('access_token_2') }}</td>
+                                            @endif
                                         @endif
                                         <td><a class="btn btn-danger btn-xs" href="{{ route('user.tokens.invalidate',2 )}}">UNIEWAŻNIJ</a></td>
                                     </tr>
@@ -68,7 +76,11 @@
                                         @if(App\AuthServer::where('id',Auth::user()->id)->value('access_token_3') === NULL)
                                             <td>Brak</td>
                                         @else
-                                            <td>{{ App\AuthServer::where('id',Auth::user()->id)->value('access_token_3') }}</td>
+                                            @if(App\AuthServer::where('id',Auth::user()->id)->value('access_token_3') === App\AuthServer::where('id',Auth::user()->id)->value('play_token') )
+                                                <td><span class="badge badge-official">{{ App\AuthServer::where('id',Auth::user()->id)->value('access_token_3') }}</span></td>
+                                            @else
+                                                <td>{{ App\AuthServer::where('id',Auth::user()->id)->value('access_token_3') }}</td>
+                                            @endif
                                         @endif
                                         <td><a class="btn btn-danger btn-xs" href="{{ route('user.tokens.invalidate',3 )}}">UNIEWAŻNIJ</a></td>
                                     </tr>

@@ -38,10 +38,10 @@
                                 <center><h2 style="margin-top:10px;"><i class="fa fa-download" aria-hidden="true"></i></h2>
                                     <h3 style="margin-top:3px; font-size:14px;">{{ App\Modpack::where('owner',Auth::user()->id)->sum('downloads') }}</h3></center>
                             </div>
-                            <i class="fa fa-user" aria-hidden="true"></i> {{ Auth::user()->name }}<br>
-                            <i class="fa fa-user-plus" aria-hidden="true"></i> {{ Auth::user()->created_at }}</br>
-                            <i class="fa fa-id-card" aria-hidden="true"></i> {{ App\AuthServer::where('id',Auth::user()->id)->value('uuid') }} </br>
-                            <i class="fa fa-cog" aria-hidden="true"></i> {{ App\AuthServer::where('id',Auth::user()->id)->value('play_token') }}
+                            <span class="badge"><i class="fa fa-user" aria-hidden="true"></i> {{ Auth::user()->name }}<br></span></br>
+                            <span class="badge"><i class="fa fa-user-plus" aria-hidden="true"></i> {{ Auth::user()->created_at }}</span></br>
+                            <span class="badge"><i class="fa fa-id-card" aria-hidden="true"></i> {{ App\AuthServer::where('id',Auth::user()->id)->value('uuid') }}</span> </br>
+                            <span class="badge"><i class="fa fa-cog" aria-hidden="true"></i> {{ App\AuthServer::where('id',Auth::user()->id)->value('play_token') }}</span>
                             <hr>
 
                            Poniżej pozkazano jakie urządzenia, mogą automatycznie logować się na twoje konto {{env('APP_NAME')}}.
@@ -64,7 +64,11 @@
                                         @if(App\AuthServer::where('id',Auth::user()->id)->value('access_token') === NULL)
                                             <td>Brak</td>
                                         @else
-                                            <td>{{ App\AuthServer::where('id',Auth::user()->id)->value('access_token') }}</td>
+                                            @if(App\AuthServer::where('id',Auth::user()->id)->value('access_token') === App\AuthServer::where('id',Auth::user()->id)->value('play_token') )
+                                                <td><span class="badge badge-official">{{ App\AuthServer::where('id',Auth::user()->id)->value('access_token') }}</span></td>
+                                            @else
+                                                <td>{{ App\AuthServer::where('id',Auth::user()->id)->value('access_token') }}</td>
+                                            @endif
                                         @endif
                                     </tr>
                                     <tr>
@@ -77,7 +81,11 @@
                                         @if(App\AuthServer::where('id',Auth::user()->id)->value('access_token_2') === NULL)
                                             <td>Brak</td>
                                         @else
-                                            <td>{{ App\AuthServer::where('id',Auth::user()->id)->value('access_token_2') }}</td>
+                                            @if(App\AuthServer::where('id',Auth::user()->id)->value('access_token_2') === App\AuthServer::where('id',Auth::user()->id)->value('play_token') )
+                                                <td><span class="badge badge-official">{{ App\AuthServer::where('id',Auth::user()->id)->value('access_token_2') }}</span></td>
+                                            @else
+                                                <td>{{ App\AuthServer::where('id',Auth::user()->id)->value('access_token_2') }}</td>
+                                            @endif
                                         @endif
                                     </tr>
                                     <tr>
@@ -90,7 +98,11 @@
                                         @if(App\AuthServer::where('id',Auth::user()->id)->value('access_token_3') === NULL)
                                             <td>Brak</td>
                                         @else
-                                            <td>{{ App\AuthServer::where('id',Auth::user()->id)->value('access_token_3') }}</td>
+                                            @if(App\AuthServer::where('id',Auth::user()->id)->value('access_token_3') === App\AuthServer::where('id',Auth::user()->id)->value('play_token') )
+                                                <td><span class="badge badge-official">{{ App\AuthServer::where('id',Auth::user()->id)->value('access_token_3') }}</span></td>
+                                            @else
+                                                <td>{{ App\AuthServer::where('id',Auth::user()->id)->value('access_token_3') }}</td>
+                                            @endif
                                         @endif
                                     </tr>
                                 </tbody>
@@ -100,7 +112,7 @@
                             <i class="fa fa-user" aria-hidden="true"></i> To jest twoja nazwa używana w grze i widoczna dla innych graczy.<br>
                             <i class="fa fa-user-plus" aria-hidden="true"></i> To jest twoja data rejestracji konta w serwisie {{env('APP_NAME')}}.<br>
                             <i class="fa fa-id-card" aria-hidden="true"></i> To jest twój unikalny identyfikator (UUID) konta.<br>
-                            <i class="fa fa-cog" aria-hidden="true"></i>  To jest twój ostatni zapisany token użyty do gry.
+                            <i class="fa fa-cog" aria-hidden="true"></i>  To jest twój ostatni zapisany token użyty do gry, jeśli w tabeli jest zielony token to ten był ostatnio użyty.<br>
                     </div>
                 </div>
 
