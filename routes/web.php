@@ -32,17 +32,19 @@ Route::get('/modpacks', function () {
 Auth::routes(['verify' => true]);
 ///
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/modpacks/modpack/{name}', 'SiteController@modpackView')->name('modpack-view');
-Route::get('/modpacks/modpack/{name}/star', 'SiteController@modpackStar')->name('modpack-star')->middleware('auth');
-Route::get('/modpacks/modpack/{name}/delstar', 'SiteController@modpackDelStar')->name('modpack-delstar')->middleware('auth');
+Route::get('/modpacks/modpack/{name}', 'SiteController@modpackView')->name('modpack.view');
+Route::get('/modpacks/modpack/{name}/star', 'SiteController@modpackStar')->name('modpack.star')->middleware('auth');
+Route::get('/modpacks/modpack/{name}/delstar', 'SiteController@modpackDelStar')->name('modpack.star.delete')->middleware('auth');
 
 
 
 //USER ACCOUNT
-Route::get('/settings', 'SettingsController@index')->name('settings')->middleware('auth');
-Route::get('/settings/modpacks', 'SettingsController@ownedModpacks')->name('modpacks-u')->middleware(['verified','auth']);
-Route::get('/settings/skin', 'SettingsController@changeSkin')->name('skin')->middleware(['verified','auth']);
-Route::post('/settings/skin/update', 'SettingsController@updateSkin')->name('skin-u')->middleware(['verified','auth']);
+Route::get('/settings', 'SettingsController@index')->name('user')->middleware('auth');
+Route::get('/settings/modpacks', 'SettingsController@ownedModpacks')->name('user.modpacks')->middleware(['verified','auth']);
+Route::get('/settings/skin', 'SettingsController@changeSkin')->name('user.skin')->middleware(['verified','auth']);
+Route::get('/settings/tokens/', 'SettingsController@viewTokens')->name('user.tokens')->middleware(['verified','auth']);
+Route::get('/settings/tokens/invalidate/{id}', 'SettingsController@invalidateToken')->name('user.tokens.invalidate')->middleware(['verified','auth']);
+Route::post('/settings/skin/update', 'SettingsController@updateSkin')->name('user.skin.update')->middleware(['verified','auth']);
 //Route::get('/settings/profile/{user}',  ['as' => 'user.editprofile', 'uses' => 'Auth\ProfileController@edit']);
 //Route::patch('/settings/profile/{user}/update',  ['as' => 'user.editprofile2', 'uses' => 'Auth\ProfileController@update']);
 

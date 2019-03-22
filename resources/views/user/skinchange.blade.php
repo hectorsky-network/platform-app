@@ -26,7 +26,7 @@
                             @if (Session::has('bad'))
                                 <div class="alert alert-danger"><i class="fa fa-check-circle" aria-hidden="true"></i>  {{ Session::get('bad') }}</div>
                             @endif
-                            <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="{{ route('skin-u') }}">
+                            <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="{{ route('user.skin.update') }}">
                                 {{ csrf_field() }}
 
                                 <div class="form-group{{ $errors->has('skin') ? ' has-error' : '' }}">

@@ -78,10 +78,11 @@ class GameAPIController extends Controller
     public function joinclient(){
     $server = file_get_contents('php://input');
     $json = json_decode($server, true);
+
     if(isset($json['accessToken']) && isset($json['selectedProfile']) && isset($json['serverId'])) {
-        AuthServer::where('access_token',$json['accessToken'])->update(['server' => $json['serverId']]);
-        abort(204);
-    }
+            AuthServer::where('play_token',$json['accessToken'])->update(['server' => $json['serverId']]);
+        }
+            //abort(204);
     }
     public function joinserver(Request $request){
         if(isset($request->username) && isset($request->serverId)) {
@@ -98,7 +99,6 @@ class GameAPIController extends Controller
                 );
                 return response()->json($response);
             }else{
-                echo $request->serverId;
                 abort(204);
             }
         }

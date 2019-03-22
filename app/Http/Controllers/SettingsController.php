@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\AuthServer;
 use App\Modpack;
 use App\Skin;
 use Illuminate\Http\Request;
@@ -56,7 +57,66 @@ class SettingsController extends Controller
         return view('user.skinchange');
     }
 
+    public function invalidateToken($id)
+    {
+        $user = AuthServer::find(Auth::user()->id);
+
+        if ($id == 1){
+            if(!empty($user->client_token)){
+                $user->access_token = NULL;
+                $user->client_token = NULL;
+                $user->save();
+                return redirect('settings/tokens')->with('status', 'Usuniętego urządzenie numer 1');
+            }else{
+                return redirect('settings/tokens')->with('status', 'Nie można unieważnić pustego tokena.');
+            }
+        }
+        if ($id == 2){
+            if(!empty($user->client_token_2)){
+                $user->access_token_2 = NULL;
+                $user->client_token_2 = NULL;
+                $user->save();
+                return redirect('settings/tokens')->with('status', 'Usuniętego urządzenie numer 2');
+            }else{
+                return redirect('settings/tokens')->with('status', 'Nie można unieważnić pustego tokena.');
+            }
+        }
+        if ($id == 3){
+            if(!empty($user->client_token_3)){
+                $user->access_token_3 = NULL;
+                $user->client_token_3 = NULL;
+                $user->save();
+                return redirect('settings/tokens')->with('status', 'Usuniętego urządzenie numer 1');
+            }else{
+                return redirect('settings/tokens')->with('status', 'Nie można unieważnić pustego tokena.');
+            }
+        }
+
+        if ($id == 'all'){
+            if(!empty($user->client_token) AND !empty($user->client_token_2) AND !empty($user->client_token_3)){
+                $user->access_token = NULL;
+                $user->client_token = NULL;
+                $user->access_token_2 = NULL;
+                $user->client_token_2 = NULL;
+                $user->access_token_3 = NULL;
+                $user->client_token_3 = NULL;
+                $user->save();
+                return redirect('settings/tokens')->with('status', 'Uneiważniono wszystkie tokeny!');
+            }else{
+                return redirect('settings/tokens')->with('status', 'Nie można unieważnić pustych tokenów.');
+            }
+        }
+
+        if(empty($id) OR $id > 3){
+            return redirect('settings/tokens')->with('status', 'Podany token nie istnieje');
+        }
+    }
+
     public function changeSkin(){
         return view('user.skinchange');
+    }
+
+    public function viewTokens(){
+        return view('user.tokens');
     }
 }

@@ -41,28 +41,75 @@
                             <i class="fa fa-user" aria-hidden="true"></i> {{ Auth::user()->name }}<br>
                             <i class="fa fa-user-plus" aria-hidden="true"></i> {{ Auth::user()->created_at }}</br>
                             <i class="fa fa-id-card" aria-hidden="true"></i> {{ App\AuthServer::where('id',Auth::user()->id)->value('uuid') }} </br>
-                            <i class="fa fa-cog" aria-hidden="true"></i>
-                            @if(App\AuthServer::where('id',Auth::user()->id)->value('client_token') === NULL)
-                                Wykonaj pierwsze logowanie aby uzyskać swój client-token.<br>
-                            @else
-                                {{ App\AuthServer::where('id',Auth::user()->id)->value('client_token') }}
-                            @endif
+                            <i class="fa fa-cog" aria-hidden="true"></i> {{ App\AuthServer::where('id',Auth::user()->id)->value('play_token') }}
                             <hr>
-                            <i class="fa fa-id-card" aria-hidden="true"></i> Jest to twój unikalny identyfikator konta.<br>
-                            <i class="fa fa-cog" aria-hidden="true"></i>  To jest twój ostatni zapisany w bazie identyfikator klienta
+
+                           Poniżej pozkazano jakie urządzenia, mogą automatycznie logować się na twoje konto {{env('APP_NAME')}}.
+                            <table class="table table-sm table-striped table-responsive-3">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Token Klienta</th>
+                                    <th>Token Dostępu</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        @if(App\AuthServer::where('id',Auth::user()->id)->value('client_token') === NULL)
+                                            <td>Brak</td>
+                                        @else
+                                            <td>{{ App\AuthServer::where('id',Auth::user()->id)->value('client_token') }}</td>
+                                        @endif
+                                        @if(App\AuthServer::where('id',Auth::user()->id)->value('access_token') === NULL)
+                                            <td>Brak</td>
+                                        @else
+                                            <td>{{ App\AuthServer::where('id',Auth::user()->id)->value('access_token') }}</td>
+                                        @endif
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        @if(App\AuthServer::where('id',Auth::user()->id)->value('client_token_2') === NULL)
+                                            <td>Brak</td>
+                                        @else
+                                            <td>{{ App\AuthServer::where('id',Auth::user()->id)->value('client_token_2') }}</td>
+                                        @endif
+                                        @if(App\AuthServer::where('id',Auth::user()->id)->value('access_token_2') === NULL)
+                                            <td>Brak</td>
+                                        @else
+                                            <td>{{ App\AuthServer::where('id',Auth::user()->id)->value('access_token_2') }}</td>
+                                        @endif
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        @if(App\AuthServer::where('id',Auth::user()->id)->value('client_token_3') === NULL)
+                                            <td>Brak</td>
+                                        @else
+                                            <td>{{ App\AuthServer::where('id',Auth::user()->id)->value('client_token_3') }}</td>
+                                        @endif
+                                        @if(App\AuthServer::where('id',Auth::user()->id)->value('access_token_3') === NULL)
+                                            <td>Brak</td>
+                                        @else
+                                            <td>{{ App\AuthServer::where('id',Auth::user()->id)->value('access_token_3') }}</td>
+                                        @endif
+                                    </tr>
+                                </tbody>
+                            </table>
+                            Jeśli chcesz unieważnić jakiś token z listy przejdź do menu <b><i class="fa fa-laptop" aria-hidden="true"></i> Wiele urządzeń</b>.
+                            <hr>
+                            <i class="fa fa-user" aria-hidden="true"></i> To jest twoja nazwa używana w grze i widoczna dla innych graczy.<br>
+                            <i class="fa fa-user-plus" aria-hidden="true"></i> To jest twoja data rejestracji konta w serwisie {{env('APP_NAME')}}.<br>
+                            <i class="fa fa-id-card" aria-hidden="true"></i> To jest twój unikalny identyfikator (UUID) konta.<br>
+                            <i class="fa fa-cog" aria-hidden="true"></i>  To jest twój ostatni zapisany token użyty do gry.
                     </div>
                 </div>
+
             </div>
             <div class="col-md-11">
                 <div class="panel panel-default">
                     <div class="panel-heading">Krótki przegląd twoich paczek</div>
 
                     <div class="panel-body">
-                        @if (session('status'))
-                            <div class="alert alert-success">
-                                {{ session('status') }}
-                            </div>
-                        @endif
                         Oto krótki przegląd twoich paczek modyfikacji.
                         <table class="table table-sm table-striped table-responsive-3">
                             <thead>

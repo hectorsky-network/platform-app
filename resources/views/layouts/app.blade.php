@@ -47,8 +47,17 @@
                         <li class="nav-item {{{ (Request::is('modpacks*') ? 'active' : '') }}}">
                             <a class="nav-link" href="{{ route('modpacks') }}"><i class="fa fa-compass"></i> Paczki modyfikacji <span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://hectorwilde.com/forums/" target="_blank"><i class="fa fa-wrench" aria-hidden="true"></i> Forum wsparcia <span class="sr-only">(current)</span></a>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-life-ring" aria-hidden="true"></i> Pomoc <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li></li>
+                                <li><a href="#"><i class="fa fa-question-circle" aria-hidden="true"></i> FAQ</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a class="nav-link" href="https://hectorwilde.com/forums/" target="_blank"><i class="fa fa-comments" aria-hidden="true"></i> Forum wsparcia</a></li>
+                                <li><a href="https://github.com/hectorsky-network" target="_blank"><i class="fa fa-github" aria-hidden="true"></i> Hectorsky Network</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#"><i class="fa fa-info-circle" aria-hidden="true"></i> O {{ env('APP_NAME') }}</a></li>
+                            </ul>
                         </li>
                     </ul>
 
@@ -66,15 +75,15 @@
 
                                 <ul class="dropdown-menu">
                                     @if(Auth::user()->isAdmin == 1)
-                                    <li><a href="{{ route('admin') }}"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Panel Administracyjny</a></li>
+                                    <li><a href="{{ route('admin') }}" style="color:red;"><i class="fa fa-tachometer" aria-hidden="true"></i> Administrator</a></li>
                                         <li role="separator" class="divider"></li>
                                     @endif
-                                        <li><a href="{{ route('settings') }}"><i class="fa fa-user" aria-hidden="true"></i> Mój profil</a></li>
+                                        <li><a href="{{ route('user') }}"><i class="fa fa-user" aria-hidden="true"></i> Mój profil</a></li>
                                         <li role="separator" class="divider"></li>
-                                        <li><a href="{{ route('modpacks-u') }}"><i class="fa fa-compass" aria-hidden="true"></i> Moje paczki</a></li>
-                                        <li><a href="{{ route('skin') }}"><i class="fa fa-paint-brush" aria-hidden="true"></i> Zmiana skórki</a></li>
+                                        <li><a href="{{ route('user.modpacks') }}"><i class="fa fa-compass" aria-hidden="true"></i> Moje paczki</a></li>
+                                        <li><a href="{{ route('user.skin') }}"><i class="fa fa-paint-brush" aria-hidden="true"></i> Zmiana skórki</a></li>
                                         <li role="separator" class="divider"></li>
-                                        <li><a href="{{ route('settings') }}"><i class="fa fa-cog" aria-hidden="true"></i> Ustawienia konta</a></li>
+                                        <li><a href="{{ route('user.tokens') }}"><i class="fa fa-laptop" aria-hidden="true"></i> Wiele urządzeń</a></li>
                                         @if(Auth::user()->hasVerifiedEmail() === FALSE)
                                             <li><a href="{{ route('verification.notice') }}"><i class="fa fa-envelope-o" aria-hidden="true"></i> Weryfikacja E-Mail</a></li>
                                         @endif
@@ -104,7 +113,7 @@
     </div>
     <footer class="footer">
         <div class="container">
-            <p class="text-muted"> {{env("APP_NAME")}}<sup>v1.3.3</sup> | Made with <a style="color:red;">♥</a> by <a href="https://github.com/hectorsky-network" target="_blank">Hectorsky Network</a><br>
+            <p class="text-muted"> {{env("APP_NAME")}}<sup>v1.4.0</sup> | Made with <a style="color:red;">♥</a> by <a href="https://github.com/hectorsky-network" target="_blank">Hectorsky Network</a><br>
                 {{env("APP_NAME")}} is not associated with Mojang AB. Minecraft is a Trademark of Mojang AB.
             </p>
         </div>

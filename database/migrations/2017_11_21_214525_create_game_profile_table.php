@@ -17,7 +17,12 @@ class CreateGameProfileTable extends Migration
             $table->increments('id');
             $table->char('uuid');
             $table->char('access_token',32)->nullable();
+            $table->char('access_token_2',32)->nullable();
+            $table->char('access_token_3',32)->nullable();
+            $table->char('play_token',32)->nullable();
             $table->string('client_token',36)->nullable();
+            $table->string('client_token_2',36)->nullable();
+            $table->string('client_token_3',36)->nullable();
             $table->char('session',32)->nullable();
             $table->string('server',41)->nullable();
             $table->timestamps();
@@ -31,6 +36,6 @@ class CreateGameProfileTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('game_session');
+        Schema::dropIfExists('game_profiles');
     }
 }
