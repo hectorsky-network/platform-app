@@ -31,7 +31,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        <img src="{{ asset('images/mcHub.png') }}" style="float:left; margin-top: -5px;">
+                        <img src="{{ asset('images/logo.png') }}" style="float:left; margin-top: -5px;">
                     </a>
                 </div>
 
