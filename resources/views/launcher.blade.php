@@ -15,11 +15,11 @@
                 <div class="carousel-inner" role="listbox">
 
                     <div class="item active">
-                        <img class="first-slide" src="{{ asset('images/launchers/packs.png') }}" alt="First Slide">
+                        <img class="first-slide" src="{{ asset('images/launchers/modpacks.png') }}" alt="First Slide">
                     </div>
 
                     <div class="item">
-                        <img class="second-slide" src="{{ asset('images/launchers/packoptions.png') }}" alt="Second Slide">
+                        <img class="second-slide" src="{{ asset('images/launchers/options_pack.png') }}" alt="Second Slide">
                     </div>
 
                     <div class="item">
