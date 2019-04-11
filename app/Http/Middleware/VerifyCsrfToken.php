@@ -16,6 +16,7 @@ class VerifyCsrfToken extends Middleware
         'authserver/refresh',
         'authserver/validate',
         'authserver/invalidate',
+        'legacy/login',
         'gameapi/session/join'
     ];
 }

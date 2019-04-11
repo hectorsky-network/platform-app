@@ -15,5 +15,7 @@ Route::post('/authserver/validate', 'Game\AuthServerController@validateAuth');
 Route::post('/authserver/invalidate', 'Game\AuthServerController@invalidateAuth');
 
 //Legacy Auth
-Route::get('/login/joinserver', 'Game\LegacyAuthController@joinServer');
-Route::get('/login/checkserver', 'Game\LegacyAuthController@checkServer');
+Route::get('/legacy/login', 'Game\LegacyAuthController@auth');
+Route::post('/legacy/login', 'Game\LegacyAuthController@auth');
+Route::get('/legacy/joinserver', 'Game\LegacyAuthController@joinServer');
+Route::get('/legacy/checkserver', 'Game\LegacyAuthController@checkServer');

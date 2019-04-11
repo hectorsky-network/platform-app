@@ -12,5 +12,5 @@ Route::post('gameapi/session/join','Game\GameAPIController@joinclient');
 Route::get('gameapi/session/hasJoined','Game\GameAPIController@joinserver');
 
 //LEGACY
-Route::get('gameapi/legacy/skin/{name}','Game\LegacySkinTranslatorController@skinTranslate');
-Route::get('gameapi/legacy/cloak/{name}','Game\LegacySkinTranslatorController@cloakTranslate');
+Route::get('legacy/skin/{name}','Game\LegacySkinTranslatorController@skinTranslate');
+Route::get('legacy/cloak/{name}','Game\LegacySkinTranslatorController@cloakTranslate');
