@@ -15,21 +15,21 @@ class LauncherController extends Controller
         $response = array(
             'build' => $build,
             'url' => array(
-                'exe'=>"https://developer.hectorsky.net/mchub/launchers/build/".$build."/launcher-4.0-".$build.".exe",
-                'jar'=>"https://developer.hectorsky.net/mchub/launchers/build/".$build."/launcher-4.0-".$build.".jar",
-                'osx'=>"https://developer.hectorsky.net/mchub/launchers/build/".$build."/launcher-4.0-".$build."-osx.app.zip"),
+                'exe'=>"https://launcher.craftnetwork.eu.org/launcher/builds/".$build."/launcher-4.0-".$build.".exe",
+                'jar'=>"https://launcher.craftnetwork.eu.org/launcher/builds/".$build."/launcher-4.0-".$build.".jar",
+                'osx'=>"https://launcher.craftnetwork.eu.org/launcher/builds/".$build."/launcher-4.0-".$build."-osx.app.zip"),
             'resources' => array(
                 array(
                     'filename' => "OpenSans+Cyberbit.ttf",
-                    'url' => "https://mchub.hectorsky.net/storage/launcher/OpenSans+Cyberbit.ttf",
+                    'url' => "https://launcher.craftnetwork.eu.org/launcher/assets/OpenSans+Cyberbit.ttf",
                     'md5' => "94a9d4cbcb9ceaa25000fa303fa81acc"),
                 array(
                     'filename' => "Raleway+FireflySung.ttf",
-                    'url' => "https://mchub.hectorsky.net/storage/launcher/Raleway+FireflySung.ttf",
+                    'url' => "https://launcher.craftnetwork.eu.org/launcher/assets/Raleway+FireflySung.ttf",
                     'md5' => "b62087eb4b11746987c800c0512890ef"),
                 array(
                     'filename' => "aether-dep.jar",
-                    'url' => "https://mchub.hectorsky.net/storage/launcher/aether-dep.jar",
+                    'url' => "https://launcher.craftnetwork.eu.org/launcher/assets/aether-dep.jar",
                     'md5' => "EBF34784444ABCB976F77C9E23692057")));
         return response()->json($response);
     }
@@ -39,21 +39,21 @@ class LauncherController extends Controller
         $response = array(
             'build' => $build,
             'url' => array(
-                'exe'=>"https://developer.hectorsky.net/mchub/launchers/build/".$build."/launcher-4.0-".$build.".exe",
-                'jar'=>"https://developer.hectorsky.net/mchub/launchers/build/".$build."/launcher-4.0-".$build.".jar",
-                'osx'=>"https://developer.hectorsky.net/mchub/launchers/build/".$build."/launcher-4.0-".$build."-osx.app.zip"),
+                'exe'=>"https://launcher.craftnetwork.eu.org/launcher/builds/".$build."/launcher-4.0-".$build.".exe",
+                'jar'=>"https://launcher.craftnetwork.eu.org/launcher/builds/".$build."/launcher-4.0-".$build.".jar",
+                'osx'=>"https://launcher.craftnetwork.eu.org/launcher/builds/".$build."/launcher-4.0-".$build."-osx.app.zip"),
             'resources' => array(
                 array(
                     'filename' => "OpenSans+Cyberbit.ttf",
-                    'url' => "https://mchub.hectorsky.net/storage/launcher/OpenSans+Cyberbit.ttf",
+                    'url' => "https://launcher.craftnetwork.eu.org/launcher/assets/OpenSans+Cyberbit.ttf",
                     'md5' => "94a9d4cbcb9ceaa25000fa303fa81acc"),
                 array(
                     'filename' => "Raleway+FireflySung.ttf",
-                    'url' => "https://mchub.hectorsky.net/storage/launcher/Raleway+FireflySung.ttf",
+                    'url' => "https://launcher.craftnetwork.eu.org/launcher/assets/Raleway+FireflySung.ttf",
                     'md5' => "b62087eb4b11746987c800c0512890ef"),
                 array(
                     'filename' => "aether-dep.jar",
-                    'url' => "https://mchub.hectorsky.net/storage/launcher/aether-dep.jar",
+                    'url' => "https://launcher.craftnetwork.eu.org/launcher/assets/launcher/aether-dep.jar",
                     'md5' => "EBF34784444ABCB976F77C9E23692057")));
         return response()->json($response);
     }
