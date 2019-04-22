@@ -35,9 +35,10 @@ class LegacyAuthController extends Controller
 
     public function joinServer(){
         if(isset($_REQUEST['sessionId']) || isset($_REQUEST['serverId'])) {
-            //$idses = substr($_REQUEST['sessionId'], 6, 32);
-            if ($_REQUEST['sessionId'] === AuthServer::where('session', $_REQUEST['sessionId'] )->value('session')) {
+            $idses = substr($_REQUEST['sessionId'], 6, 32);
+            if ($_REQUEST['sessionId'] === AuthServer::where('session', $_REQUEST['sessionId'] )->value('session') OR $idses === AuthServer::where('play_token', $idses)->value('play_token')) {
                 AuthServer::where('session', $_REQUEST['sessionId'] )->update(['server' => $_REQUEST['serverId']]);
+                AuthServer::where('play_token', $idses )->update(['server' => $_REQUEST['serverId']]);
                 echo 'OK';
             } else {
                 echo 'Bad Login';
