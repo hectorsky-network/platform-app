@@ -14,7 +14,6 @@ class LegacySkinTranslatorController extends Controller
         if(isset($name)) {
             $skin = Skin::where('id', User::where('name', $name)->value('id'))->value('skin');
             if($skin !== '0000000000000000000000000000000f') {
-                header("Content-Type: image/png");
 				print file_get_contents(public_path() . '/storage/skins/' . $skin);
             }else{
                 abort(404);
@@ -29,7 +28,6 @@ class LegacySkinTranslatorController extends Controller
         if(isset($name)) {
             $cape = Skin::where('id', User::where('name', $name)->value('id'))->value('cape');
             if($cape !== '0000000000000000000000000000000f') {
-                header("Content-Type: image/png");
 				print file_get_contents(public_path() . '/storage/capes/' . $cape);
             }else{
                 abort(404);
