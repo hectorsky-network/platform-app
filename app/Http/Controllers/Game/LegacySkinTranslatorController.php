@@ -13,12 +13,9 @@ class LegacySkinTranslatorController extends Controller
     public function skinTranslate($name){
         if(isset($name)) {
             $skin = Skin::where('id', User::where('name', $name)->value('id'))->value('skin');
-            if($skin !== NULL) {
-                $im = imagecreatefrompng(public_path() . '/storage/skins/' . $skin);
-                imagesavealpha($im, true);
+            if($skin !== '0000000000000000000000000000000f') {
                 header("Content-Type: image/png");
-                imagepng($im);
-                imagedestroy($im);
+				print file_get_contents(public_path() . '/storage/skins/' . $skin);
             }else{
                 abort(404);
             }
@@ -32,11 +29,8 @@ class LegacySkinTranslatorController extends Controller
         if(isset($name)) {
             $cape = Skin::where('id', User::where('name', $name)->value('id'))->value('cape');
             if($cape !== '0000000000000000000000000000000f') {
-                $im = imagecreatefrompng(public_path() . '/storage/capes/' . $cape);
-                imagesavealpha($im, true);
                 header("Content-Type: image/png");
-                imagepng($im);
-                imagedestroy($im);
+				print file_get_contents(public_path() . '/storage/capes/' . $cape);
             }else{
                 abort(404);
             }
