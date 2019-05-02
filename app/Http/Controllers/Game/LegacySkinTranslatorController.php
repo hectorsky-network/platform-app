@@ -31,7 +31,7 @@ class LegacySkinTranslatorController extends Controller
 	public function cloakTranslate($name){
         if(isset($name)) {
             $cape = Skin::where('id', User::where('name', $name)->value('id'))->value('cape');
-            if($cape !== NULL) {
+            if($cape !== '0000000000000000000000000000000f') {
                 $im = imagecreatefrompng(public_path() . '/storage/capes/' . $cape);
                 imagesavealpha($im, true);
                 header("Content-Type: image/png");
